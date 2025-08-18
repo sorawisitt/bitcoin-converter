@@ -1,4 +1,4 @@
-# Odin 𝕏's Bitcoin Converter
+# Sorawisit's Bitcoin Converter
 
 A web application that allows users to quickly convert between **Thai Baht (THB), Bitcoin (BTC), and Satoshis (SAT)** while providing real-world valuations of Bitcoin for common products.
 
@@ -51,4 +51,4 @@ This project is open-source and licensed under the **MIT License**.
 
 ## Credits
 
-Created by **[@megojail](https://x.com/megojail)**. Support via **[donations](https://getalby.com/p/odinx)**.
+Created by **[@megojail](https://x.com/sorawisitt)**.
