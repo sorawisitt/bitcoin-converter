@@ -26,7 +26,7 @@ A web application that allows users to quickly convert between **Thai Baht (THB)
 ### Running the App
 
 ```sh
-git clone https://github.com/megojail/bitcoin-converter.git
+git clone https://github.com/sorawisitt/bitcoin-converter.git
 cd bitcoin-converter
 open index.html
 ```
