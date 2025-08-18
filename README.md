@@ -51,4 +51,4 @@ This project is open-source and licensed under the **MIT License**.
 
 ## Credits
 
-Created by **[@megojail](https://x.com/sorawisitt)**.
+Created by **[@SorawisitT](https://x.com/sorawisitt)**.
