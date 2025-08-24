@@ -262,21 +262,18 @@
             border-color: var(--hover-color);
             box-shadow: 0 0 0 3px rgba(247, 147, 26, 0.2);
         }
-        .status-indicator {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #4caf50;
-            margin-left: 8px;
-            margin-right: 8px;
-            vertical-align: middle;
-            animation: pulse 2s infinite;
+        .status-text {
+            display: inline;
+            color: #4caf50;
+            font-size: 0.85em;
+            margin-left: 6px;
+            margin-right: 6px;
+            animation: pulse-text 2s infinite;
         }
-        .status-indicator.error {
-            background: var(--error-color);
+        .status-text.error {
+            color: var(--error-color);
         }
-        @keyframes pulse {
+        @keyframes pulse-text {
             0% { opacity: 1; }
             50% { opacity: 0.5; }
             100% { opacity: 1; }
@@ -497,7 +494,7 @@
                     this.elements.rate.innerHTML = `1 BTC = ฿${this.btcToThbRate.toLocaleString('th-TH', {
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2
-                    })} THB <span class="status-indicator"></span><br><span class="sat-rate">1 THB = ${satPerThb} sats</span><br><small>Updated: ${now} • Bitkub API</small>`;
+                    })} THB <span class="status-text">LIVE</span><br><span class="sat-rate">1 THB = ${satPerThb} sats</span><br><small>Updated: ${now} • Bitkub API</small>`;
                     this.elements.error.classList.remove('visible');
                     this.updateFields();
                     this.updateBitcoinStandard();
@@ -509,7 +506,7 @@
                     this.elements.rate.innerHTML = `1 BTC = ฿${this.btcToThbRate.toLocaleString('th-TH', {
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2
-                    })} THB <span class="status-indicator error"></span><br><span class="sat-rate">1 THB = ${satPerThb} sats</span><br><small>Offline Mode - Using approximate price</small>`;
+                    })} THB <span class="status-text error">LIVE</span><br><span class="sat-rate">1 THB = ${satPerThb} sats</span><br><small>Offline Mode - Using approximate price</small>`;
                     this.elements.error.textContent = error.message.includes('fetch')
                         ? 'Network error. Please check your connection.'
                         : 'Failed to fetch rate. Using fallback price.';
