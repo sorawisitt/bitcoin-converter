@@ -4,8 +4,6 @@ Convert between Bitcoin (BTC), Satoshis (SAT), and Thai Baht (THB). The
 app fetches the live BTC/THB price from Bitkub and updates every 30
 seconds, with an offline fallback.
 
-![Preview](scpreview.png)
-
 ## Features
 
 -   Live BTC/THB price from Bitkub (`THB_BTC`)
