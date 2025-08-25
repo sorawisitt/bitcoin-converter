@@ -34,9 +34,9 @@ seconds, with an offline fallback.
 ## Project structure
 
     .
-    âââ index.html               # All markup, styles, and scripts (single-file app)
-    âââ scpreview.png            # Open Graph/Twitter preview
-    âââ favcon.png               # Favicon (referenced in <head>)
+    index.html               # All markup, styles, and scripts (single-file app)
+    scpreview.png            # Open Graph/Twitter preview
+    favcon.png               # Favicon (referenced in <head>)
 
 ## Run locally
 
