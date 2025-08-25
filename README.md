@@ -62,17 +62,17 @@ npx serve .
 Open `index.html` and adjust the constants inside the `BitcoinConverter`
 class as needed:
 
--   `API_URL` --- Bitkub ticker endpoint (default `THB_BTC`)
--   `REFRESH_INTERVAL` --- auto-refresh period in ms (default `30000`)
--   `FALLBACK_PRICE` --- used when the API is unreachable (default
+-   `API_URL`  Bitkub ticker endpoint (default `THB_BTC`)
+-   `REFRESH_INTERVAL`  auto-refresh period in ms (default `30000`)
+-   `FALLBACK_PRICE`  used when the API is unreachable (default
     `3250000`)
--   `commonItems` --- array of `{ name, price }` in THB for the "Bitcoin
+-   `commonItems`  array of `{ name, price }` in THB for the "Bitcoin
     Standard" grid
 
 Example item:
 
 ``` js
-{ name: "â Coffee (Starbucks)", price: 150 }
+{ name: "Coffee (Starbucks)", price: 150 }
 ```
 
 ## Accessibility and UX notes
@@ -121,8 +121,8 @@ root so social previews and the favicon work.
 
 ## Attribution
 
--   **Bitkub API** for market data\
--   Created by [@SorawisitT](https://x.com/sorawisitt) Â· contact at
+-   **Bitkub API** for market data
+-   Created by [@SorawisitT](https://x.com/sorawisitt) · contact at
     [sorawisit.com](https://sorawisit.com)
 
 ## License
