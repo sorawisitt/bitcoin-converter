@@ -1,74 +1,61 @@
-<p align="left">₿ Bitcoin Converter ₿</p>
+# ₿ Bitcoin Converter (BTC, SAT, THB)
 
-<p align="left"><strong>A Professional-Grade Satoshi & Thai Baht Financial Calculator</strong></p>
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-orange.svg)](http://makeapullrequest.com)
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![Twitter Follow](https://img.shields.io/twitter/follow/sorawisitt?style=social)](https://x.com/sorawisitt)
 
-## 🎯 Summary
+A professional, lightweight Bitcoin converter and dashboard optimized for the Thai market. This tool calculates conversions between **Thai Baht (THB)**, **Satoshi (SAT)**, and **Bitcoin (BTC)** using real-time market data.
 
-This project is a high-performance financial tool designed for the Thai Bitcoin community. It bridges the gap between traditional fiat (THB) and the Bitcoin network's native units (BTC & Satoshis). Built with a focus on Purchasing Power Parity, it allows users to visualize their Bitcoin holdings against everyday Thai expenses and custom life goals.
+---
 
-## ✨ Engineering Features
+## ✨ Key Features
 
-### 📊 Real-Time Financial Dashboard
+* **Real-time Exchange Rates:** Fetches live prices directly from the **Bitkub API**.
+* **Network Intelligence:** Displays current Bitcoin network fees (sat/vB) and the live Halving countdown via **Mempool.space**.
+* **The Bitcoin Standard Grid:** Compare the value of BTC/Sats against everyday Thai items (Street food, BTS fares, Gold, etc.).
+* **Custom Savings Goals:** Add your own personal targets (e.g., "Dream Car") saved locally in your browser.
+* **Advanced Theme Engine:** Seamlessly switch between Light, Dark, and System modes with a flicker-free "Glassmorphism" UI.
+* **Privacy-Focused:** No trackers, no cookies, and no backend. All calculations happen on the client-side.
 
-- **Live Node Sync:** Fetches real-time market rates from Bitkub and network congestion data (fees) from Mempool.space.
-- **Halving Countdown:** A precision timer tracking the next Bitcoin block reward subsidy halving.
-- **Network Fee Insight:** Displays "Priority Next Block" fees in sats/vB to help users optimize transaction costs.
+## 🛠️ Tech Stack
 
-### 🧮 Smart Multi-Way Converter
+* **Frontend:** Vanilla HTML5, CSS3 (Grid & Flexbox).
+* **Logic:** Modern Vanilla JavaScript (ES6+).
+* **Storage:** `localStorage` for persisting custom user goals.
+* **Dependencies:** None. Zero frameworks for maximum performance.
 
-- **Bidirectional Logic:** Update any field (THB, SAT, or BTC), and the remaining two synchronize instantly using a reactive state engine.
-- **Hard Cap Protection:** Implements a strict validation rule for the 21,000,000 BTC total supply limit, including a UI warning system.
-- **Human-Friendly Formatting:** Automatically handles commas and decimal precision (up to 8 places for BTC) while maintaining a clean "Copy to Clipboard" utility.
+## 🚀 Getting Started
 
-### 🏠 The "Bitcoin Standard" Comparison
+1.  **Clone the Repository:**
+    ```bash
+    git clone [https://github.com/your-username/bitcoin-converter-th.git](https://github.com/your-username/bitcoin-converter-th.git)
+    ```
+2.  **Run the Site:**
+    Simply open `index.html` in any web browser. No server setup or `npm install` required.
 
-- **Asset Benchmarking:** Compares Satoshi values against items like Street Food (🍜), Gold (📀), and Real Estate (🚗).
-- **Custom Savings Goals:** Users can add, save, and delete personal financial targets (e.g., "Dream House"). Data is persisted via localStorage for privacy-first, server-less state management.
+## 📡 API Credits
 
-## 🛠️ Technical Stack
+This project proudly uses data from:
+* [Bitkub](https://www.bitkub.com) - Market Ticker API.
+* [Mempool.space](https://mempool.space) - Bitcoin Network & Fee API.
 
-| Layer | Technology | Implementation Detail |
-| --- | --- | --- |
-| Logic | Vanilla JavaScript | Asynchronous API handling with fetch and custom number formatting logic. |
-| Styling | CSS Variables | Dynamic theme engine (Light/Dark/System) and Glassmorphism effects. |
-| APIs | RESTful Integration | Multi-endpoint synchronization with 30-second auto-refresh cycles. |
-| Assets | Performance-Optimized | WebP icons and system-font stacks for sub-100ms rendering. |
+## 🤝 Contributing
 
-## 🎨 Design Philosophy
+This is an open-source project. Feel free to fork this repository, improve the UI, or add new localized comparison items. 
 
-The UI is built on Glassmorphism principles:
+1. Fork the project.
+2. Create your feature branch (`git checkout -b feature/NewComparisonItem`).
+3. Commit changes (`git commit -m 'Add new item'`).
+4. Push to the branch (`git push origin feature/NewComparisonItem`).
+5. Open a Pull Request.
 
-- **Visual Depth:** Uses `backdrop-filter: blur(24px)` and radial gradients to create a sense of layering.
-- **Responsive Architecture:** A mobile-first grid system that scales from iPhone displays to ultra-wide monitors.
-- **Accessibility:** High-contrast typography using the Inter and JetBrains Mono font families for maximum readability of financial figures.
+## 📜 License
 
-## 📂 Project Structure
+Distributed under the **MIT License**. See `LICENSE` for more information.
 
-Plaintext  
-├── index.html        # Monolithic Architecture (UI, Logic, & Styles in one file)  
-├── .github/          # CI/CD configurations  
-└── README.md         # Technical Documentation  
+---
 
-## ⚙️ Local Development
-
-Because this project is "Build-Less," it can be run instantly in any modern browser.
-
-- **Clone the Repo:**  
-  `git clone https://github.com/yourusername/btc-converter.git`
-- **Launch:**  
-  Open `index.html` in Chrome, Safari, or Firefox.
-- **No Dependencies:**  
-  No `npm install` or webpack required.
-
-## ⚖️ Rights & Licensing
-
-Copyright © 2026 Sorawisit Totharong.  
-Made with 🧡 for the Bitcoin community.
-
-This tool is provided "as is" for educational and calculation purposes. Financial data is sourced from third-party APIs; always verify rates before making trades.
-
-<p align="center">
-  <a href="https://x.com/sorawisitt">Twitter</a> •
-  <a href="https://sorawisit.com">Portfolio</a> •
-  <a href="https://pay.blink.sv/SORAWISIT">Donate Sats ⚡</a>
-</p>
+**Built with 🧡 by [Sorawisit](https://x.com/sorawisitt)** *Visit my portfolio at [sorawisit.com](https://sorawisit.com)*
