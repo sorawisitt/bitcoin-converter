@@ -12,7 +12,8 @@ A professional-grade, real-time financial tool designed for the "Bitcoin Standar
 * **🔄 Triple-Sync Conversion:** Real-time, bidirectional conversion between THB, SAT, and BTC.
 * **📈 Live Market Data:** Integrated with the **Bitkub API** for precise Thai Baht market rates and **Mempool.space** for network fee estimation.
 * **⏳ Halving Countdown:** Dynamic timer tracking the next Bitcoin block reward halving.
-* **🎯 Savings Goals:** * **Purchasing Power Comparison:** Built-in grid comparing BTC value to everyday items (Coffee, Gold, Tesla).
+* **🎯 Savings Goals:**
+    * **Purchasing Power Comparison:** Built-in grid comparing BTC value to everyday items (Coffee, Gold, Tesla).
     * **Custom Goals:** Persistent user-defined savings goals saved via `localStorage`.
 * **🛡️ Supply Integrity Logic:** Hard-coded logic preventing calculations exceeding the total 21,000,000 BTC supply.
 * **🌓 Advanced UI/UX:**
