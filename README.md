@@ -31,7 +31,7 @@ A professional, lightweight Bitcoin converter and dashboard optimized for the Th
 
 1.  **Clone the Repository:**
     ```bash
-    git clone [https://github.com/your-username/bitcoin-converter-th.git](https://github.com/your-username/bitcoin-converter-th.git)
+    git clone [https://github.com/sorawisitt/bitcoin-converter.git](https://github.com/sorawisitt/bitcoin-converter.git)
     ```
 2.  **Run the Site:**
     Simply open `index.html` in any web browser. No server setup or `npm install` required.
