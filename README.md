@@ -2,7 +2,7 @@
 
 A professional-grade, real-time financial tool designed for the "Bitcoin Standard." This converter allows users to instantly calculate values between Bitcoin (BTC), Satoshis (SAT), and Thai Baht (THB) using live market rates.
 
-[![Live Demo](https://img.shields.io/badge/demo-live-orange?style=for-the-badge)](https://sorawisit.com/btc)
+[![Live Demo](https://img.shields.io/badge/demo-live-orange?style=for-the-badge)](https://converter.sorawisit.com)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
 ---
