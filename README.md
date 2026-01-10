@@ -1,14 +1,8 @@
-<p align="center">₿ Bitcoin Converter ₿</p>
+<p align="left">₿ Bitcoin Converter ₿</p>
 
-<p align="center"><strong>A Professional-Grade Satoshi & Thai Baht Financial Calculator</strong></p>
+<p align="left"><strong>A Professional-Grade Satoshi & Thai Baht Financial Calculator</strong></p>
 
-<p align="center">
-  <img src="https://img.shields.io/website?url=https%3A%2F%2Fsorawisit.com%2Fbtc&style=for-the-badge&logo=bitcoin&label=Live%20Converter&color=f7931a" alt="Website Status">
-  <img src="https://img.shields.io/badge/Data_Source-Bitkub_|_Mempool-blue?style=for-the-badge" alt="Data Sources">
-  <img src="https://img.shields.io/badge/UX-Glassmorphism-94a3b8?style=for-the-badge" alt="Design Style">
-</p>
-
-## 🎯 Executive Summary
+## 🎯 Summary
 
 This project is a high-performance financial tool designed for the Thai Bitcoin community. It bridges the gap between traditional fiat (THB) and the Bitcoin network's native units (BTC & Satoshis). Built with a focus on Purchasing Power Parity, it allows users to visualize their Bitcoin holdings against everyday Thai expenses and custom life goals.
 
