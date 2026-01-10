@@ -2,39 +2,56 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Professional Bitcoin, Satoshi, and Thai Baht converter with real-time Bitkub rates.">
-    <title>Bitcoin Converter Pro (BTC, SAT, THB)</title>
-    <link rel="icon" type="image/png" href="https://sorawisit.com/favcon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Professional Bitcoin, Satoshi, and Thai Baht converter with real-time Bitkub rates, Halving countdown, and Network fees.">
+    <title>Bitcoin Converter (BTC, SAT, THB)</title>
+    <link rel="icon" type="image/webp" href="https://sorawisit.com/favcon.webp">
     
+    <!-- Theme Engine: Prevent White Flash -->
+    <script>
+        (function() {
+            const savedMode = localStorage.getItem('themeMode') || 'system';
+            let themeToApply = savedMode;
+            if (savedMode === 'system') {
+                themeToApply = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+            document.documentElement.setAttribute('data-theme', themeToApply);
+        })();
+    </script>
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
             --primary: #f7931a;
+            --primary-glow: rgba(247, 147, 26, 0.2);
             --primary-hover: #e07b00;
-            --bg-body: #f8f9fa;
-            --card-bg: rgba(255, 255, 255, 0.9);
-            --text-main: #1a1a1a;
-            --text-muted: #666666;
-            --border: #e1e4e8;
-            --input-bg: #ffffff;
-            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
-            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
-            --radius: 16px;
+            --bg-body: #f8fafc;
+            --card-bg: rgba(255, 255, 255, 0.75);
+            --card-border: rgba(255, 255, 255, 0.9);
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --input-bg: rgba(255, 255, 255, 0.9);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+            --radius: 24px;
+            --success: #10b981;
+            --danger: #ef4444;
         }
 
         [data-theme="dark"] {
-            --bg-body: #0f1113;
-            --card-bg: rgba(26, 29, 33, 0.95);
-            --text-main: #f1f3f5;
-            --text-muted: #9ba1a6;
-            --border: #2d3238;
-            --input-bg: #111316;
-            --shadow-lg: 0 10px 30px rgba(0,0,0,0.4);
+            --bg-body: #0b0e14;
+            --card-bg: rgba(17, 24, 39, 0.7);
+            --card-border: rgba(255, 255, 255, 0.06);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: rgba(255, 255, 255, 0.1);
+            --input-bg: rgba(15, 23, 42, 0.8);
+            --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            --primary-glow: rgba(247, 147, 26, 0.15);
         }
 
         * {
@@ -47,32 +64,37 @@
         body {
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
             background-color: var(--bg-body);
+            background-image: 
+                radial-gradient(at 0% 0%, var(--primary-glow) 0, transparent 50%),
+                radial-gradient(at 100% 100%, var(--primary-glow) 0, transparent 50%);
+            background-attachment: fixed;
             color: var(--text-main);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px;
-            transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 16px;
+            transition: background-color 0.4s ease, color 0.4s ease;
+            overflow-x: hidden;
         }
 
         .main-container {
             width: 100%;
-            max-width: 800px;
+            max-width: 850px;
             margin-top: 2vh;
         }
 
-        /* Glassmorphism Card */
         .glass-card {
             background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--border);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--card-border);
             border-radius: var(--radius);
             box-shadow: var(--shadow-lg);
             padding: 32px;
             margin-bottom: 24px;
-            transition: border-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
         header {
@@ -91,74 +113,98 @@
         .btc-icon {
             font-size: 2.5rem;
             color: var(--primary);
+            filter: drop-shadow(0 0 15px var(--primary-glow));
         }
 
         h1 {
-            font-weight: 700;
-            font-size: 1.75rem;
-            letter-spacing: -0.02em;
+            font-weight: 800;
+            font-size: 1.85rem;
+            letter-spacing: -0.04em;
+            background: linear-gradient(135deg, var(--text-main) 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .credit {
             font-size: 0.85rem;
+            font-weight: 500;
             color: var(--text-muted);
         }
 
-        .credit a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
+        /* Dashboard Stats Grid Alignment Fix */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 32px;
         }
 
-        /* Ticker Style */
-        .live-ticker {
+        .stat-box {
             background: var(--input-bg);
             border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 16px;
+            border-radius: 18px;
+            padding: 16px 8px;
             text-align: center;
-            margin-bottom: 24px;
-            position: relative;
-            overflow: hidden;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 100px;
+        }
+
+        .stat-box.primary-stat {
+            grid-column: 1 / -1;
+            border-color: var(--primary);
+            background: linear-gradient(145deg, var(--input-bg), var(--primary-glow));
+            box-shadow: 0 10px 20px -5px var(--primary-glow);
+            padding: 24px 20px;
+            margin-bottom: 4px;
+            min-height: auto;
         }
 
         .ticker-label {
-            font-size: 0.75rem;
+            font-size: 0.65rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.12em;
             color: var(--text-muted);
-            margin-bottom: 8px;
+            font-weight: 800;
+            margin-bottom: 6px;
             display: block;
         }
 
         .ticker-value {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        .sat-value {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            font-weight: 700;
             color: var(--text-main);
-            margin-top: 4px;
+            letter-spacing: -0.02em;
         }
 
-        /* Input Grid */
+        .primary-stat .ticker-value {
+            font-size: 1.75rem;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+
+        .sub-value {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 6px;
+            font-weight: 600;
+        }
+
+        /* Tech Input Styling */
         .converter-grid {
             display: grid;
-            gap: 20px;
-            margin-bottom: 32px;
-        }
-
-        .input-wrapper {
-            position: relative;
+            gap: 16px;
+            margin-bottom: 20px;
         }
 
         .input-wrapper label {
-            display: block;
+            display: flex;
+            justify-content: space-between;
             font-size: 0.8rem;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--text-muted);
             margin-bottom: 8px;
             padding-left: 4px;
@@ -166,326 +212,349 @@
 
         .input-container {
             position: relative;
-            display: flex;
-            align-items: center;
         }
 
         .input-container input {
             width: 100%;
-            padding: 14px 45px 14px 16px;
+            padding: 16px 54px 16px 16px;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
+            font-weight: 600;
             background: var(--input-bg);
-            border: 1px solid var(--border);
-            border-radius: 10px;
+            border: 2px solid var(--border);
+            border-radius: 16px;
             color: var(--text-main);
-            transition: all 0.2s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .input-container input:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(247, 147, 26, 0.15);
+            box-shadow: 0 0 0 4px var(--primary-glow);
         }
 
-        .input-container .copy-btn {
+        .copy-btn {
             position: absolute;
             right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
             background: none;
             border: none;
-            color: var(--text-muted);
+            font-size: 1.4rem;
+            padding: 8px;
             cursor: pointer;
-            padding: 4px;
-            border-radius: 4px;
-            transition: color 0.2s;
+            opacity: 0.5;
+            transition: all 0.2s;
         }
 
-        .input-container .copy-btn:hover {
-            color: var(--primary);
+        .copy-btn:active { opacity: 1; transform: translateY(-50%) scale(0.9); }
+
+        #supply-warning {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 20px;
+            display: none;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            animation: fadeIn 0.3s ease;
         }
 
-        /* Controls */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .controls-row {
             display: flex;
+            gap: 12px;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
-            padding-top: 16px;
+            padding-top: 24px;
             border-top: 1px solid var(--border);
         }
 
         .btn {
-            height: 42px; /* Fixed height for consistent alignment */
-            padding: 0 18px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.85rem;
+            height: 48px;
+            padding: 0 16px;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.2s;
             border: 1px solid var(--border);
             display: inline-flex;
+            flex: 1;
+            justify-content: center;
             align-items: center;
-            justify-content: center; /* Center horizontally */
             gap: 8px;
-            line-height: 1; /* Reset line height for flex centering */
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            border: none;
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-hover);
-            transform: translateY(-1px);
-        }
-
-        .btn-outline {
-            background: transparent;
+            background: var(--input-bg);
             color: var(--text-main);
         }
 
-        .btn-outline:hover {
-            background: var(--border);
+        .btn-primary { 
+            background: var(--primary); 
+            color: white; 
+            border: none;
+            box-shadow: 0 4px 15px var(--primary-glow);
         }
+        
+        .btn:active { transform: scale(0.96); }
 
-        .status-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.75rem;
-            color: #2fb344;
-            font-weight: 600;
-            height: 42px; /* Match button height for row symmetry */
-        }
-
-        .status-pill.offline { color: #f76707; }
-
-        .dot {
-            width: 8px;
-            height: 8px;
-            background: currentColor;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.4; transform: scale(1.2); }
-            100% { opacity: 1; transform: scale(1); }
-        }
-
-        /* Comparison Section */
-        .comparison-section h2 {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
+        /* Comparison Grid */
+        .comparison-section { margin-bottom: 40px; }
+        
+        .section-header {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .section-header h2 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
         }
 
         .comparison-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
         }
 
         .comparison-card {
-            background: var(--input-bg);
-            border: 1px solid var(--border);
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
             padding: 16px;
+            border-radius: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(12px);
+        }
+
+        .item-icon { 
+            font-size: 1.25rem; 
+            margin-bottom: 8px; 
+            display: inline-block;
+            background: var(--bg-body);
+            width: 38px;
+            height: 38px;
+            line-height: 38px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .item-name { font-weight: 700; font-size: 0.85rem; margin-bottom: 2px; color: var(--text-main); }
+        .item-thb { font-size: 0.75rem; color: var(--text-muted); font-weight: 500; margin-bottom: 12px; }
+        .item-sat { font-family: 'JetBrains Mono', monospace; color: var(--primary); font-weight: 800; font-size: 1.1rem; letter-spacing: -0.04em; }
+
+        .comparison-card.custom { border: 2px dashed var(--primary); }
+
+        /* Modal */
+        #modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.6);
+            display: none;
+            justify-content: center;
+            align-items: flex-end; 
+            z-index: 2000;
+            backdrop-filter: blur(8px);
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 24px 24px 0 0;
+            width: 100%;
+            max-width: 500px;
+            border: 1px solid var(--card-border);
+            box-shadow: var(--shadow-lg);
+            animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
+        .modal-content input {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 12px;
             border-radius: 12px;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .comparison-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .item-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 12px;
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .item-name {
+            border: 1px solid var(--border);
+            background: var(--input-bg);
             color: var(--text-main);
-            font-weight: 600;
-            font-size: 0.95rem;
-            margin-bottom: 4px;
-        }
-
-        .item-thb {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-bottom: 12px;
-        }
-
-        .item-sat {
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--primary);
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-
-        .item-btc {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 4px;
+            font-family: inherit;
         }
 
         footer {
-            margin: 40px 0;
+            margin-top: 20px;
+            padding-bottom: 60px;
             text-align: center;
             color: var(--text-muted);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             line-height: 1.8;
         }
 
-        footer a {
-            color: inherit;
-            text-decoration: underline;
+        footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
+
+        @media (min-width: 769px) {
+            #modal-overlay { align-items: center; }
+            .modal-content { border-radius: 24px; animation: fadeIn 0.3s ease; }
+            .comparison-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+            h1 { font-size: 2.25rem; }
+            .btc-icon { font-size: 3rem; }
+            .primary-stat .ticker-value { font-size: 2.5rem; }
+            .ticker-value { font-size: 1.1rem; }
+            .glass-card { padding: 40px; }
+            .stats-row { gap: 16px; grid-template-columns: repeat(3, 1fr); }
+            .stat-box { min-height: 110px; }
         }
 
-        /* Toast UI */
-        #toast {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: var(--text-main);
-            color: var(--bg-body);
-            padding: 12px 24px;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            z-index: 1000;
-        }
-
-        #toast.show { transform: translateX(-50%) translateY(0); }
-
-        @media (max-width: 600px) {
-            .glass-card { padding: 20px; }
-            .comparison-grid { grid-template-columns: 1fr; }
-            .controls-row { flex-direction: column; align-items: stretch; }
-            .btn { justify-content: center; }
-            .status-pill { justify-content: center; }
+        @media (max-width: 768px) {
+            .stats-row { grid-template-columns: repeat(2, 1fr); }
+            .stat-box:nth-child(4) { grid-column: span 2; min-height: 80px; }
         }
     </style>
 </head>
 <body>
 
-    <div id="toast">Copied to clipboard!</div>
+    <div id="toast" style="position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--text-main); color: var(--bg-body); padding: 12px 24px; border-radius: 50px; font-weight: 600; z-index: 3000; transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28); font-size: 0.8rem; white-space: nowrap; box-shadow: var(--shadow-lg);">Copied to clipboard!</div>
+
+    <div id="modal-overlay" onclick="if(event.target === this) closeModal()">
+        <div class="modal-content">
+            <h3 style="margin-bottom: 20px; font-weight: 800;">Add Custom Goal</h3>
+            <input type="text" id="new-item-name" placeholder="Target Name (e.g. Dream House)">
+            <input type="number" id="new-item-price" placeholder="Target Price (THB)">
+            <input type="text" id="new-item-icon" placeholder="Icon Emoji (e.g. 🏰)">
+            <div style="display: flex; gap: 12px; margin-top: 10px;">
+                <button class="btn" style="flex: 1;" onclick="closeModal()">Cancel</button>
+                <button class="btn btn-primary" style="flex: 1;" onclick="saveCustomItem()">Save Goal</button>
+            </div>
+        </div>
+    </div>
 
     <div class="main-container">
         <header>
             <div class="logo-area">
                 <span class="btc-icon">₿</span>
-                <h1>Bitcoin Converter Pro</h1>
+                <h1>Bitcoin Converter</h1>
             </div>
-            <p class="credit">Developed by <a href="https://x.com/sorawisitt" target="_blank">@SorawisitT</a></p>
+            <p class="credit">Dev <a href="https://x.com/sorawisitt" target="_blank">@SorawisitT</a></p>
         </header>
 
         <div class="glass-card">
-            <div class="live-ticker" id="ticker-box">
-                <span class="ticker-label">Current Exchange Rate</span>
-                <div class="ticker-value" id="ticker-btc-thb">Fetching...</div>
-                <div class="sat-value" id="ticker-thb-sat">---</div>
+            <div class="stats-row">
+                <div class="stat-box primary-stat">
+                    <span class="ticker-label">BTC Market Price</span>
+                    <div class="ticker-value" id="ticker-btc-thb">฿0.00</div>
+                    <div class="sub-value" id="ticker-thb-sat">---</div>
+                </div>
+                
+                <div class="stat-box">
+                    <span class="ticker-label">Halving</span>
+                    <div class="ticker-value" id="halving-timer">--d --h</div>
+                    <div class="sub-value">Next Reward Cut</div>
+                </div>
+                <div class="stat-box">
+                    <span class="ticker-label">Network Fee</span>
+                    <div class="ticker-value" id="fee-high">-- sat</div>
+                    <div class="sub-value">Priority Next Block</div>
+                </div>
+                <div class="stat-box">
+                    <span class="ticker-label">Sync Status</span>
+                    <div class="ticker-value" id="countdown-text">30s</div>
+                    <div class="sub-value" id="status-text">Connected</div>
+                </div>
             </div>
 
             <div class="converter-grid">
                 <div class="input-wrapper">
-                    <label for="thb-input">Thai Baht (THB)</label>
+                    <label>Thai Baht <span>THB</span></label>
                     <div class="input-container">
-                        <input type="text" id="thb-input" placeholder="0" autocomplete="off">
-                        <button class="copy-btn" onclick="copyValue('thb-input')" title="Copy">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                        </button>
+                        <input type="text" id="thb-input" placeholder="0" inputmode="numeric">
+                        <button class="copy-btn" onclick="copyValue('thb-input')">📄</button>
                     </div>
                 </div>
-
                 <div class="input-wrapper">
-                    <label for="sat-input">Satoshis (SAT)</label>
+                    <label>Satoshi <span>SAT</span></label>
                     <div class="input-container">
-                        <input type="text" id="sat-input" placeholder="0" autocomplete="off">
-                        <button class="copy-btn" onclick="copyValue('sat-input')" title="Copy">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                        </button>
+                        <input type="text" id="sat-input" placeholder="0" inputmode="numeric">
+                        <button class="copy-btn" onclick="copyValue('sat-input')">📄</button>
                     </div>
                 </div>
-
                 <div class="input-wrapper">
-                    <label for="btc-input">Bitcoin (BTC)</label>
+                    <label>Bitcoin <span>BTC</span></label>
                     <div class="input-container">
-                        <input type="text" id="btc-input" placeholder="0.00000000" autocomplete="off">
-                        <button class="copy-btn" onclick="copyValue('btc-input')" title="Copy">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                        </button>
+                        <input type="text" id="btc-input" placeholder="0" inputmode="decimal">
+                        <button class="copy-btn" onclick="copyValue('btc-input')">📄</button>
                     </div>
                 </div>
             </div>
 
+            <div id="supply-warning">
+                ⚠️ Warning: Only 21,000,000 Bitcoin will ever exist. Values capped to total supply.
+            </div>
+
             <div class="controls-row">
-                <div class="status-pill" id="status-pill">
-                    <div class="dot"></div>
-                    <span id="status-text">Live Sync</span>
-                    <span id="countdown" style="margin-left: 8px; opacity: 0.6;"></span>
-                </div>
-                
-                <div style="display: flex; gap: 8px;">
-                    <button class="btn btn-outline" id="theme-toggle">
-                        <span id="theme-icon">🌓</span> <span id="theme-text">System</span>
-                    </button>
-                    <button class="btn btn-primary" id="refresh-btn">
-                        🔄 Refresh
-                    </button>
-                </div>
+                <button class="btn" id="theme-toggle">
+                    <span id="theme-icon">🌓</span> <span id="theme-label">System</span>
+                </button>
+                <button class="btn btn-primary" id="refresh-btn">🔄 Update</button>
             </div>
         </div>
 
         <div class="comparison-section">
-            <h2>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary)"><path d="M3 6h18M3 12h18M3 18h18"></path></svg>
-                The Bitcoin Standard
-            </h2>
-            <div class="comparison-grid" id="comparison-grid">
-                <!-- Cards injected by JS -->
+            <div class="section-header">
+                <h2>The Bitcoin Standard</h2>
             </div>
+            <div class="comparison-grid" id="standard-grid"></div>
+        </div>
+
+        <div class="comparison-section" id="goals-section" style="display: none;">
+            <div class="section-header">
+                <h2>Custom Savings Goals</h2>
+                <button class="btn" style="height: 32px; padding: 0 12px; font-size: 0.75rem; flex: initial;" onclick="openModal()">+ New Goal</button>
+            </div>
+            <div class="comparison-grid" id="goals-grid"></div>
+        </div>
+
+        <div id="no-goals-cta" style="text-align: center; margin-bottom: 60px;">
+             <button class="btn" style="max-width: 280px; margin: 0 auto;" onclick="openModal()">+ Add Custom Goal</button>
         </div>
 
         <footer>
-            Data provided by <a href="https://www.bitkub.com" target="_blank">Bitkub API</a><br>
-            Bitcoin Standard visualization inspired by global purchasing power parity.<br>
-            <a href="https://sorawisit.com" target="_blank">sorawisit.com</a> • <a href="https://pay.blink.sv/SORAWISIT" target="_blank">Donate SATs</a>
+            Node Sync: <a href="https://bitkub.com" target="_blank">Bitkub</a> & <a href="https://mempool.space" target="_blank">Mempool</a><br>
+            Purchasing Power Parity • <a href="https://sorawisit.com" target="_blank">sorawisit.com</a><br>
+            ⚡ <a href="https://pay.blink.sv/SORAWISIT" target="_blank">Donate Sats</a>
         </footer>
     </div>
 
     <script>
-        // Use a safe wrapper to avoid global scope pollution
         (function() {
+            const MAX_BTC = 21000000;
             const state = {
-                rate: null,
-                themeMode: localStorage.getItem('themeMode') || 'system', // system, light, dark
-                autoRefresh: true,
+                rate: 3200000,
+                themeMode: localStorage.getItem('themeMode') || 'system',
                 secondsRemaining: 30,
-                lastSource: 'thb',
-                items: [
-                    { name: "Coffee", price: 65, icon: "☕" },
-                    { name: "Street Food", price: 50, icon: "🍜" },
-                    { name: "BTS SkyTrain", price: 35, icon: "🚇" },
-                    { name: "Cinema Ticket", price: 240, icon: "🎬" },
+                nextHalving: new Date('2028-04-17T00:00:00Z').getTime(),
+                customItems: JSON.parse(localStorage.getItem('customGoals')) || [],
+                baseItems: [
+                    { name: "Coffee", price: 120, icon: "☕" },
+                    { name: "Street Food Meal", price: 60, icon: "🍜" },
+                    { name: "BTS Fare", price: 20, icon: "🚇" },
+                    { name: "Movie Ticket", price: 240, icon: "🎬" },
                     { name: "iPhone 17 Pro", price: 43900, icon: "📱" },
-                    { name: "Monthly Rent", price: 12000, icon: "🏠" },
-                    { name: "Gasoline (1L)", price: 38, icon: "⛽" },
-                    { name: "Gold (1 Baht Weight)", price: 70000, icon: "📀" },
-                    { name: "Tesla Model 3", price: 1439000, icon: "🚗" }
+                    { name: "Condo Rent", price: 15000, icon: "🏠" },
+                    { name: "Full Tank of Gas", price: 1200, icon: "⛽" },
+                    { name: "Gold (1 Baht)", price: 65000, icon: "📀" },
+                    { name: "Tesla Model 3", price: 1149000, icon: "🚗" }
                 ]
             };
 
@@ -495,210 +564,246 @@
                 btc: document.getElementById('btc-input'),
                 tickerBtc: document.getElementById('ticker-btc-thb'),
                 tickerSat: document.getElementById('ticker-thb-sat'),
-                refreshBtn: document.getElementById('refresh-btn'),
+                halving: document.getElementById('halving-timer'),
+                fee: document.getElementById('fee-high'),
+                countdown: document.getElementById('countdown-text'),
+                status: document.getElementById('status-text'),
+                standardGrid: document.getElementById('standard-grid'),
+                goalsGrid: document.getElementById('goals-grid'),
+                goalsSection: document.getElementById('goals-section'),
+                noGoalsCta: document.getElementById('no-goals-cta'),
+                modal: document.getElementById('modal-overlay'),
+                toast: document.getElementById('toast'),
                 themeToggle: document.getElementById('theme-toggle'),
+                themeLabel: document.getElementById('theme-label'),
                 themeIcon: document.getElementById('theme-icon'),
-                themeText: document.getElementById('theme-text'),
-                statusText: document.getElementById('status-text'),
-                statusPill: document.getElementById('status-pill'),
-                countdown: document.getElementById('countdown'),
-                grid: document.getElementById('comparison-grid'),
-                toast: document.getElementById('toast')
+                warning: document.getElementById('supply-warning')
             };
 
             function init() {
-                setupTheme();
-                fetchRate();
+                applyTheme(); // Updates labels/icons based on initial state
+                fetchAllData();
                 setupListeners();
-                startTimer();
-            }
-
-            function setupTheme() {
-                applyTheme();
-
-                // Listen for system theme changes
-                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-                    if (state.themeMode === 'system') {
-                        applyTheme();
-                    }
-                });
-            }
-
-            function applyTheme() {
-                const isDarkSystem = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                let activeTheme = state.themeMode;
-                
-                if (state.themeMode === 'system') {
-                    activeTheme = isDarkSystem ? 'dark' : 'light';
-                    els.themeIcon.textContent = '🌓';
-                    els.themeText.textContent = 'System';
-                } else if (state.themeMode === 'light') {
-                    els.themeIcon.textContent = '☀️';
-                    els.themeText.textContent = 'Light';
-                } else {
-                    els.themeIcon.textContent = '🌙';
-                    els.themeText.textContent = 'Dark';
-                }
-
-                document.documentElement.setAttribute('data-theme', activeTheme);
-            }
-
-            function toggleTheme() {
-                // Cycle: System -> Light -> Dark -> System
-                if (state.themeMode === 'system') {
-                    state.themeMode = 'light';
-                } else if (state.themeMode === 'light') {
-                    state.themeMode = 'dark';
-                } else {
-                    state.themeMode = 'system';
-                }
-
-                localStorage.setItem('themeMode', state.themeMode);
-                applyTheme();
-            }
-
-            async function fetchRate() {
-                els.refreshBtn.disabled = true;
-                els.statusText.textContent = "Updating...";
-                
-                try {
-                    const response = await fetch(`https://api.bitkub.com/api/market/ticker?sym=THB_BTC&t=${Date.now()}`);
-                    const data = await response.json();
-                    
-                    if (data.THB_BTC && data.THB_BTC.last) {
-                        state.rate = data.THB_BTC.last;
-                        updateTicker();
-                        recalculate(state.lastSource);
-                        updateComparison();
-                        
-                        els.statusPill.classList.remove('offline');
-                        els.statusText.textContent = "Live Sync";
-                        state.secondsRemaining = 30;
-                    }
-                } catch (err) {
-                    console.error("Fetch failed", err);
-                    els.statusPill.classList.add('offline');
-                    els.statusText.textContent = "Offline Mode";
-                    if (!state.rate) state.rate = 3200000;
-                } finally {
-                    els.refreshBtn.disabled = false;
-                }
-            }
-
-            function updateTicker() {
-                els.tickerBtc.textContent = `1 BTC = ฿${state.rate.toLocaleString('th-TH', {minimumFractionDigits: 0})}`;
-                const satsPerThb = Math.round(100000000 / state.rate);
-                els.tickerSat.textContent = `1 THB ≈ ${satsPerThb.toLocaleString()} sats`;
+                setInterval(updateTickers, 1000);
+                setInterval(updateHalving, 1000);
             }
 
             function setupListeners() {
                 els.thb.oninput = (e) => handleInput(e, 'thb');
                 els.sat.oninput = (e) => handleInput(e, 'sat');
                 els.btc.oninput = (e) => handleInput(e, 'btc');
-
-                els.refreshBtn.onclick = fetchRate;
+                document.getElementById('refresh-btn').onclick = fetchAllData;
                 els.themeToggle.onclick = toggleTheme;
-            }
-
-            function formatWithCommas(value, isBTC = false) {
-                if (!value) return '';
-                const parts = value.toString().split('.');
-                parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-                if (isBTC && parts.length > 1) {
-                    return parts[0] + '.' + parts[1].substring(0, 8);
-                }
-                return parts[0];
-            }
-
-            function handleInput(e, source) {
-                let cursorPosition = e.target.selectionStart;
-                let originalLength = e.target.value.length;
                 
-                let rawVal = e.target.value.replace(/[^0-9.]/g, '');
-                if ((rawVal.match(/\./g) || []).length > 1) rawVal = rawVal.slice(0, -1);
-                
-                if (source !== 'btc' && rawVal.includes('.')) {
-                    rawVal = rawVal.split('.')[0];
-                }
-
-                state.lastSource = source;
-                
-                const formatted = formatWithCommas(rawVal, source === 'btc');
-                e.target.value = formatted;
-
-                let newLength = formatted.length;
-                cursorPosition = cursorPosition + (newLength - originalLength);
-                e.target.setSelectionRange(cursorPosition, cursorPosition);
-
-                recalculate(source);
-            }
-
-            function recalculate(source) {
-                if (!state.rate) return;
-
-                const getVal = (el) => parseFloat(el.value.replace(/,/g, '')) || 0;
-                const val = getVal(els[source]);
-
-                if (source === 'thb') {
-                    const btc = val / state.rate;
-                    els.sat.value = formatWithCommas(Math.round(btc * 100000000));
-                    els.btc.value = formatWithCommas(btc.toFixed(8), true);
-                } else if (source === 'sat') {
-                    const btc = val / 100000000;
-                    els.thb.value = formatWithCommas(Math.round(btc * state.rate));
-                    els.btc.value = formatWithCommas(btc.toFixed(8), true);
-                } else if (source === 'btc') {
-                    els.thb.value = formatWithCommas(Math.round(val * state.rate));
-                    els.sat.value = formatWithCommas(Math.round(val * 100000000));
-                }
-            }
-
-            function updateComparison() {
-                els.grid.innerHTML = '';
-                state.items.forEach(item => {
-                    const btcVal = item.price / state.rate;
-                    const satVal = Math.round(btcVal * 100000000);
-                    
-                    const card = document.createElement('div');
-                    card.className = 'comparison-card';
-                    card.innerHTML = `
-                        <div class="item-header">
-                            <span>${item.icon}</span>
-                        </div>
-                        <div class="item-name">${item.name}</div>
-                        <div class="item-thb">฿${item.price.toLocaleString()}</div>
-                        <div class="item-sat">${satVal.toLocaleString()} sats</div>
-                        <div class="item-btc">${btcVal.toFixed(8)} BTC</div>
-                    `;
-                    els.grid.appendChild(card);
+                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+                    if (state.themeMode === 'system') applyTheme();
                 });
             }
 
-            function startTimer() {
-                setInterval(() => {
-                    if (state.secondsRemaining > 0) {
-                        state.secondsRemaining--;
-                        els.countdown.textContent = `(${state.secondsRemaining}s)`;
-                    } else {
-                        fetchRate();
-                    }
-                }, 1000);
+            async function fetchAllData() {
+                state.secondsRemaining = 30;
+                els.status.textContent = "Updating...";
+                try {
+                    const bResp = await fetch(`https://api.bitkub.com/api/market/ticker?sym=THB_BTC&t=${Date.now()}`);
+                    const bData = await bResp.json();
+                    if(bData.THB_BTC) state.rate = parseFloat(bData.THB_BTC.last);
+
+                    const fResp = await fetch('https://mempool.space/api/v1/fees/recommended');
+                    const fData = await fResp.json();
+                    els.fee.textContent = `${fData.fastestFee} sat/vB`;
+
+                    updateStaticUI();
+                    els.status.textContent = "Connected";
+                } catch (e) {
+                    els.status.textContent = "Offline";
+                }
             }
 
-            window.copyValue = (id) => {
-                const input = document.getElementById(id);
-                if (!input.value) return;
-                
-                const el = document.createElement('textarea');
-                el.value = input.value.replace(/,/g, ''); 
-                document.body.appendChild(el);
-                el.select();
-                document.execCommand('copy');
-                document.body.removeChild(el);
+            function updateTickers() {
+                if (state.secondsRemaining > 0) {
+                    state.secondsRemaining--;
+                    els.countdown.textContent = `${state.secondsRemaining}s`;
+                } else {
+                    fetchAllData();
+                }
+            }
 
-                els.toast.classList.add('show');
-                setTimeout(() => els.toast.classList.remove('show'), 2000);
+            function updateHalving() {
+                const now = new Date().getTime();
+                const dist = state.nextHalving - now;
+                const days = Math.floor(dist / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                els.halving.textContent = `${days}d ${hours}h`;
+            }
+
+            function updateStaticUI() {
+                els.tickerBtc.textContent = `฿${state.rate.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                const satsPerThb = Math.round(100000000 / state.rate);
+                els.tickerSat.textContent = `1 THB ≈ ${satsPerThb.toLocaleString()} sats`;
+                renderComparison();
+            }
+
+            function renderComparison() {
+                els.standardGrid.innerHTML = '';
+                state.baseItems.forEach(item => els.standardGrid.appendChild(createCard(item)));
+
+                els.goalsGrid.innerHTML = '';
+                if (state.customItems.length > 0) {
+                    els.goalsSection.style.display = 'block';
+                    els.noGoalsCta.style.display = 'none';
+                    state.customItems.forEach((item, idx) => els.goalsGrid.appendChild(createCard(item, true, idx)));
+                } else {
+                    els.goalsSection.style.display = 'none';
+                    els.noGoalsCta.style.display = 'block';
+                }
+            }
+
+            function createCard(item, isCustom = false, idx = null) {
+                const btcVal = item.price / state.rate;
+                const satVal = Math.round(btcVal * 100000000);
+                const card = document.createElement('div');
+                card.className = `comparison-card ${isCustom ? 'custom' : ''}`;
+                card.innerHTML = `
+                    ${isCustom ? `<button style="position:absolute;top:8px;right:8px;background:none;border:none;color:var(--danger);cursor:pointer;font-weight:bold;font-size:1.1rem;padding:4px;" onclick="deleteItem(${idx})">×</button>` : ''}
+                    <span class="item-icon">${item.icon}</span>
+                    <div class="item-name">${item.name}</div>
+                    <div class="item-thb">฿${Math.round(item.price).toLocaleString()}</div>
+                    <div class="item-sat">${satVal.toLocaleString()} sats</div>
+                `;
+                return card;
+            }
+
+            function formatNumber(num, isBTC = false) {
+                if (isNaN(num)) return "0";
+                if (isBTC) {
+                    return parseFloat(num.toFixed(8)).toLocaleString('en-US', { maximumFractionDigits: 8 });
+                }
+                return Math.round(num).toLocaleString('en-US');
+            }
+
+            function handleInput(e, source) {
+                const input = e.target;
+                const originalSelectionStart = input.selectionStart;
+                const originalValue = input.value;
+                
+                let rawValStr = source === 'btc' ? input.value.replace(/[^0-9.]/g, '') : input.value.replace(/\D/g, '');
+                
+                if (source === 'btc') {
+                    const parts = rawValStr.split('.');
+                    if (parts.length > 2) rawValStr = parts[0] + '.' + parts.slice(1).join('');
+                }
+
+                if (rawValStr === '' || rawValStr === '.') {
+                    if (rawValStr === '') {
+                        els.thb.value = '';
+                        els.sat.value = '';
+                        els.btc.value = '';
+                        els.warning.style.display = 'none';
+                    }
+                    return;
+                }
+
+                let val = parseFloat(rawValStr);
+                let currentBTC = 0;
+                let showWarning = false;
+
+                if (source === 'thb') {
+                    currentBTC = val / state.rate;
+                } else if (source === 'sat') {
+                    currentBTC = val / 100000000;
+                } else if (source === 'btc') {
+                    currentBTC = val;
+                }
+
+                if (currentBTC > MAX_BTC) {
+                    currentBTC = MAX_BTC;
+                    showWarning = true;
+                    if (source === 'thb') val = MAX_BTC * state.rate;
+                    if (source === 'sat') val = MAX_BTC * 100000000;
+                    if (source === 'btc') val = MAX_BTC;
+                    rawValStr = val.toString();
+                }
+
+                els.warning.style.display = showWarning ? 'block' : 'none';
+
+                let formattedTyped;
+                if (source === 'btc') {
+                    const [intPart, decPart] = rawValStr.split('.');
+                    formattedTyped = parseInt(intPart || '0', 10).toLocaleString('en-US');
+                    if (decPart !== undefined) formattedTyped += '.' + decPart.substring(0, 8);
+                } else {
+                    formattedTyped = Math.round(val).toLocaleString('en-US');
+                }
+                
+                input.value = formattedTyped;
+
+                const addedChars = input.value.length - originalValue.length;
+                let newCursorPos = originalSelectionStart + addedChars;
+                input.setSelectionRange(newCursorPos, newCursorPos);
+
+                if (source === 'thb') {
+                    els.sat.value = formatNumber(currentBTC * 100000000);
+                    els.btc.value = formatNumber(currentBTC, true);
+                } else if (source === 'sat') {
+                    els.thb.value = formatNumber(currentBTC * state.rate);
+                    els.btc.value = formatNumber(currentBTC, true);
+                } else if (source === 'btc') {
+                    els.thb.value = formatNumber(currentBTC * state.rate);
+                    els.sat.value = formatNumber(currentBTC * 100000000);
+                }
+            }
+
+            window.openModal = () => els.modal.style.display = 'flex';
+            window.closeModal = () => els.modal.style.display = 'none';
+            window.saveCustomItem = () => {
+                const name = document.getElementById('new-item-name').value;
+                const price = parseFloat(document.getElementById('new-item-price').value);
+                const icon = document.getElementById('new-item-icon').value || '🎯';
+                if (name && price) {
+                    state.customItems.push({ name, price, icon });
+                    localStorage.setItem('customGoals', JSON.stringify(state.customItems));
+                    renderComparison();
+                    closeModal();
+                }
             };
+            window.deleteItem = (idx) => {
+                state.customItems.splice(idx, 1);
+                localStorage.setItem('customGoals', JSON.stringify(state.customItems));
+                renderComparison();
+            };
+            window.copyValue = (id) => {
+                const el = document.getElementById(id);
+                const text = el.value.replace(/,/g, '');
+                const textArea = document.createElement("textarea");
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                els.toast.style.transform = 'translateX(-50%) translateY(0)';
+                setTimeout(() => els.toast.style.transform = 'translateX(-50%) translateY(100px)', 2000);
+            };
+
+            function toggleTheme() {
+                const modes = ['system', 'light', 'dark'];
+                const currentIndex = modes.indexOf(state.themeMode);
+                state.themeMode = modes[(currentIndex + 1) % modes.length];
+                localStorage.setItem('themeMode', state.themeMode);
+                applyTheme();
+            }
+
+            function applyTheme() {
+                let actualTheme = state.themeMode;
+                if (state.themeMode === 'system') {
+                    actualTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                    els.themeIcon.textContent = '🌓';
+                    els.themeLabel.textContent = 'System';
+                } else {
+                    els.themeIcon.textContent = state.themeMode === 'dark' ? '🌙' : '☀️';
+                    els.themeLabel.textContent = state.themeMode.charAt(0).toUpperCase() + state.themeMode.slice(1);
+                }
+                document.documentElement.setAttribute('data-theme', actualTheme);
+            }
 
             init();
         })();
