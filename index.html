@@ -1,812 +1,662 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="Professional Bitcoin, Satoshi, and Thai Baht converter with real-time Bitkub rates, Halving countdown, and Network fees.">
-    <title>Bitcoin Converter (BTC, SAT, THB)</title>
-    <link rel="icon" type="image/webp" href="https://sorawisit.com/favcon.webp">
-    
-    <!-- Theme Engine: Prevent White Flash -->
-    <script>
-        (function() {
-            const savedMode = localStorage.getItem('themeMode') || 'system';
-            let themeToApply = savedMode;
-            if (savedMode === 'system') {
-                themeToApply = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-            }
-            document.documentElement.setAttribute('data-theme', themeToApply);
-        })();
-    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorawisit Totharong — Tourism Researcher &amp; Translator, Bangkok</title>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- SEO & Canonical -->
+    <meta name="description" content="Sorawisit Totharong is a Tourism & Hospitality Management student at NIDA, a professional translator, and a cultural researcher exploring the unique dynamics of Bangkok.">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#020617" media="(prefers-color-scheme: dark)">
+    <link rel="canonical" href="https://sorawisit.com" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="sorawisit.com — The website of Sorawisit Totharong" />
+    <meta property="og:description" content="Sorawisit Totharong is a Tourism & Hospitality Management student at NIDA, a professional translator, and a cultural researcher exploring the unique dynamics of Bangkok." />
+    <meta property="og:image" content="https://sorawisit.com/head.webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://sorawisit.com" />
+    <meta property="og:site_name" content="sorawisit.com" />
+    <meta property="og:locale" content="en_US" />
 
-    <style>
-        :root {
-            --primary: #f7931a;
-            --primary-glow: rgba(247, 147, 26, 0.2);
-            --primary-hover: #e07b00;
-            --bg-body: #f8fafc;
-            --card-bg: rgba(255, 255, 255, 0.75);
-            --card-border: rgba(255, 255, 255, 0.9);
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --border: #e2e8f0;
-            --input-bg: rgba(255, 255, 255, 0.9);
-            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
-            --radius: 24px;
-            --success: #10b981;
-            --danger: #ef4444;
-        }
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="sorawisit.com — The website of Sorawisit Totharong" />
+    <meta name="twitter:description" content="Sorawisit Totharong is a Tourism & Hospitality Management student at NIDA, a professional translator, and a cultural researcher exploring the unique dynamics of Bangkok." />
+    <meta name="twitter:image" content="https://sorawisit.com/head.webp" />
 
-        [data-theme="dark"] {
-            --bg-body: #0b0e14;
-            --card-bg: rgba(17, 24, 39, 0.7);
-            --card-border: rgba(255, 255, 255, 0.06);
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border: rgba(255, 255, 255, 0.1);
-            --input-bg: rgba(15, 23, 42, 0.8);
-            --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            --primary-glow: rgba(247, 147, 26, 0.15);
-        }
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Sorawisit Totharong",
+      "alternateName": "สรวิสิฐ โตท่าโรง",
+      "url": "https://sorawisit.com",
+      "sameAs": [
+        "https://www.linkedin.com/in/sorawisit/",
+        "https://twitter.com/SorawisitT"
+      ],
+      "jobTitle": "Translator & Editor",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Nisit Sam Yan Co., Ltd."
+      },
+      "alumniOf": [
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "National Institute of Development Administration",
+          "alternateName": "NIDA"
+        },
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "Mahidol University"
+        }
+      ],
+      "hasOccupation": [
+        {
+          "@type": "Occupation",
+          "name": "Translator & Editor",
+          "occupationLocation": {
+            "@type": "Country",
+            "name": "Thailand"
+          },
+          "description": "End-to-end book translation and editorial workflows, adapting complex narratives for the Thai market."
+        },
+        {
+          "@type": "Occupation",
+          "name": "Researcher",
+          "description": "Cultural researcher exploring the unique dynamics of Bangkok."
+        }
+      ],
+      "knowsAbout": [
+        "Tourism & Hospitality Management",
+        "Translation",
+        "Cultural Research",
+        "Linguistics",
+        "Sustainable Tourism",
+        "Thailand Soft Power",
+        "Bangkok"
+      ],
+      "knowsLanguage": [
+        {
+          "@type": "Language",
+          "name": "Thai"
+        },
+        {
+          "@type": "Language",
+          "name": "English"
+        }
+      ],
+      "homeLocation": {
+        "@type": "City",
+        "name": "Bangkok",
+        "containedInPlace": {
+          "@type": "Country",
+          "name": "Thailand"
+        }
+      },
+      "description": "Tourism & Hospitality Management student at NIDA, professional translator and editor, and cultural researcher exploring the unique dynamics of Bangkok."
+    }
+    </script>
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-tap-highlight-color: transparent;
-        }
+    <!-- Structured Data: Published Research -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ScholarlyArticle",
+      "headline": "Service quality development to enhance revisit intention among Thai family tourists at water park hotels in Pattaya City, Chonburi province",
+      "author": [
+        { "@type": "Person", "name": "Sorawisit Totharong", "url": "https://sorawisit.com" },
+        { "@type": "Person", "name": "Paithoon Monpanthong" }
+      ],
+      "datePublished": "2026-04-03",
+      "inLanguage": "th",
+      "isPartOf": {
+        "@type": "PublicationIssue",
+        "issueNumber": "2",
+        "isPartOf": {
+          "@type": "PublicationVolume",
+          "volumeNumber": "22",
+          "isPartOf": {
+            "@type": "Periodical",
+            "name": "International Thai Tourism Journal"
+          }
+        }
+      }
+    }
+    </script>
 
-        body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background-color: var(--bg-body);
-            background-image: 
-                radial-gradient(at 0% 0%, var(--primary-glow) 0, transparent 50%),
-                radial-gradient(at 100% 100%, var(--primary-glow) 0, transparent 50%);
-            background-attachment: fixed;
-            color: var(--text-main);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 16px;
-            transition: background-color 0.4s ease, color 0.4s ease;
-            overflow-x: hidden;
-        }
+    <!-- Theme Initialization (prevents flash) -->
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme') || 'auto';
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (theme === 'dark' || (theme === 'auto' && prefersDark)) {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
 
-        .main-container {
-            width: 100%;
-            max-width: 850px;
-            margin-top: 2vh;
-        }
-
-        .glass-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid var(--card-border);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-lg);
-            padding: 32px;
-            margin-bottom: 24px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 32px;
-        }
-
-        .logo-area {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 8px;
-        }
-
-        .btc-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-            filter: drop-shadow(0 0 15px var(--primary-glow));
-        }
-
-        h1 {
-            font-weight: 800;
-            font-size: 1.85rem;
-            letter-spacing: -0.04em;
-            background: linear-gradient(135deg, var(--text-main) 0%, var(--primary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .credit {
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--text-muted);
-        }
-
-        /* Dashboard Stats Grid Alignment Fix */
-        .stats-row {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-bottom: 32px;
-        }
-
-        .stat-box {
-            background: var(--input-bg);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 16px 8px;
-            text-align: center;
-            transition: all 0.2s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            min-height: 100px;
-        }
-
-        .stat-box.primary-stat {
-            grid-column: 1 / -1;
-            border-color: var(--primary);
-            background: linear-gradient(145deg, var(--input-bg), var(--primary-glow));
-            box-shadow: 0 10px 20px -5px var(--primary-glow);
-            padding: 24px 20px;
-            margin-bottom: 4px;
-            min-height: auto;
-        }
-
-        .ticker-label {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--text-muted);
-            font-weight: 800;
-            margin-bottom: 6px;
-            display: block;
-        }
-
-        .ticker-value {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--text-main);
-            letter-spacing: -0.02em;
-        }
-
-        .primary-stat .ticker-value {
-            font-size: 1.75rem;
-            color: var(--primary);
-            line-height: 1.2;
-        }
-
-        .sub-value {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 6px;
-            font-weight: 600;
-        }
-
-        /* Tech Input Styling */
-        .converter-grid {
-            display: grid;
-            gap: 16px;
-            margin-bottom: 20px;
-        }
-
-        .input-wrapper label {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-            padding-left: 4px;
-        }
-
-        .input-container {
-            position: relative;
-        }
-
-        .input-container input {
-            width: 100%;
-            padding: 16px 54px 16px 16px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1.15rem;
-            font-weight: 600;
-            background: var(--input-bg);
-            border: 2px solid var(--border);
-            border-radius: 16px;
-            color: var(--text-main);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .input-container input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px var(--primary-glow);
-        }
-
-        .copy-btn {
-            position: absolute;
-            right: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            font-size: 1.4rem;
-            padding: 8px;
-            cursor: pointer;
-            opacity: 0.5;
-            transition: all 0.2s;
-        }
-
-        .copy-btn:active { opacity: 1; transform: translateY(-50%) scale(0.9); }
-
-        #supply-warning {
-            background: rgba(239, 68, 68, 0.1);
-            color: var(--danger);
-            padding: 12px 16px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-align: center;
-            margin-bottom: 20px;
-            display: none;
-            border: 1px solid rgba(239, 68, 68, 0.2);
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .controls-row {
-            display: flex;
-            gap: 12px;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 24px;
-            border-top: 1px solid var(--border);
-        }
-
-        .btn {
-            height: 48px;
-            padding: 0 16px;
-            border-radius: 14px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            border: 1px solid var(--border);
-            display: inline-flex;
-            flex: 1;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            background: var(--input-bg);
-            color: var(--text-main);
-        }
-
-        .btn-primary { 
-            background: var(--primary); 
-            color: white; 
-            border: none;
-            box-shadow: 0 4px 15px var(--primary-glow);
-        }
-        
-        .btn:active { transform: scale(0.96); }
-
-        /* Comparison Grid */
-        .comparison-section { margin-bottom: 40px; }
-        
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .section-header h2 {
-            font-size: 1.25rem;
-            font-weight: 800;
-            letter-spacing: -0.03em;
-        }
-
-        .comparison-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-
-        .comparison-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            padding: 16px;
-            border-radius: 20px;
-            position: relative;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(12px);
-        }
-
-        .item-icon { 
-            font-size: 1.25rem; 
-            margin-bottom: 8px; 
-            display: inline-block;
-            background: var(--bg-body);
-            width: 38px;
-            height: 38px;
-            line-height: 38px;
-            text-align: center;
-            border-radius: 10px;
-        }
-
-        .item-name { font-weight: 700; font-size: 0.85rem; margin-bottom: 2px; color: var(--text-main); }
-        .item-thb { font-size: 0.75rem; color: var(--text-muted); font-weight: 500; margin-bottom: 12px; }
-        .item-sat { font-family: 'JetBrains Mono', monospace; color: var(--primary); font-weight: 800; font-size: 1.1rem; letter-spacing: -0.04em; }
-
-        .comparison-card.custom { border: 2px dashed var(--primary); }
-
-        /* Modal */
-        #modal-overlay {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.6);
-            display: none;
-            justify-content: center;
-            align-items: flex-end; 
-            z-index: 2000;
-            backdrop-filter: blur(8px);
-        }
-
-        .modal-content {
-            background: var(--card-bg);
-            padding: 24px;
-            border-radius: 24px 24px 0 0;
-            width: 100%;
-            max-width: 500px;
-            border: 1px solid var(--card-border);
-            box-shadow: var(--shadow-lg);
-            animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        @keyframes slideUp {
-            from { transform: translateY(100%); }
-            to { transform: translateY(0); }
-        }
-
-        .modal-content input {
-            width: 100%;
-            padding: 14px;
-            margin-bottom: 12px;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            background: var(--input-bg);
-            color: var(--text-main);
-            font-family: inherit;
-        }
-
-        footer {
-            margin-top: 20px;
-            padding-bottom: 60px;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.75rem;
-            line-height: 1.8;
-        }
-
-        footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
-
-        @media (min-width: 769px) {
-            #modal-overlay { align-items: center; }
-            .modal-content { border-radius: 24px; animation: fadeIn 0.3s ease; }
-            .comparison-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
-            h1 { font-size: 2.25rem; }
-            .btc-icon { font-size: 3rem; }
-            .primary-stat .ticker-value { font-size: 2.5rem; }
-            .ticker-value { font-size: 1.1rem; }
-            .glass-card { padding: 40px; }
-            .stats-row { gap: 16px; grid-template-columns: repeat(3, 1fr); }
-            .stat-box { min-height: 110px; }
-        }
-
-        @media (max-width: 768px) {
-            .stats-row { grid-template-columns: repeat(2, 1fr); }
-            .stat-box:nth-child(4) { grid-column: span 2; min-height: 80px; }
-        }
-    </style>
+    <link rel="icon" type="image/webp" href="favicon.webp">
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#0f172a',
+                        darkCard: '#1e2937'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .card { @apply bg-white dark:bg-slate-800 border-2 border-gray-100 dark:border-slate-700 rounded-3xl relative z-10 p-6 md:p-8; transition: border-color 500ms, box-shadow 500ms, transform 500ms; }
+        .card:hover { @apply border-blue-200 dark:border-blue-500/30 shadow-xl shadow-blue-900/5 dark:shadow-blue-500/10 -translate-y-1; }
+        .cursor { display: inline-block; width: 3px; height: 1em; background-color: #3b82f6; margin-left: 4px; vertical-align: middle; animation: blink 1s step-end infinite; }
+        @keyframes blink { from, to { opacity: 1; } 50% { opacity: 0; } }
+        .waving-hand { display: inline-block; animation: wave 2.5s infinite; transform-origin: 70% 70%; }
+        @keyframes wave { 0%, 60%, 100% { transform: rotate(0deg) } 10%, 30% { transform: rotate(14deg) } 20% { transform: rotate(-8deg) } 40% { transform: rotate(-4deg) } 50% { transform: rotate(10deg) } }
+        #shimmer { position: absolute; top: 0; left: 0; width: 800px; height: 800px; background: radial-gradient(circle, rgba(59,130,246,0.04) 0%, transparent 70%); border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); z-index: 0; transition: opacity 0.3s ease; opacity: 0; will-change: transform; }
+        .dark #shimmer { background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%); }
+        .msg-bubble { animation: popIn 0.4s cubic-bezier(0.175,0.885,0.32,1.275); transform-origin: center top; }
+        @keyframes popIn { from { opacity: 0; transform: scale(0.98) translateY(-10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+        .loading-dots::after { content: '.'; animation: dots 1s steps(5,end) infinite; }
+        @keyframes dots { 0%,20% { content: '.'; } 40% { content: '..'; } 60% { content: '...'; } 80%,100% { content: ''; } }
+    </style>
 </head>
-<body>
+<body id="top" class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-gray-100 transition-colors duration-300 selection:bg-yellow-200 dark:selection:bg-blue-500/30">
 
-    <div id="toast" style="position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--text-main); color: var(--bg-body); padding: 12px 24px; border-radius: 50px; font-weight: 600; z-index: 3000; transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28); font-size: 0.8rem; white-space: nowrap; box-shadow: var(--shadow-lg);">Copied to clipboard!</div>
+    <noscript>
+        <style>
+            #typewriter::before { content: "Hi, I'm Sorawisit!"; }
+            .cursor { display: none !important; }
+            #gate { display: none !important; }
+        </style>
+        <div class="fixed top-0 left-0 right-0 z-[9999] bg-yellow-50 border-b border-yellow-300 text-yellow-900 text-sm p-3 text-center">
+            JavaScript is disabled — the search and theme toggle are unavailable. Please reach out via <a href="https://www.linkedin.com/in/sorawisit/" class="underline font-bold">LinkedIn</a>.
+        </div>
+    </noscript>
 
-    <div id="modal-overlay" onclick="if(event.target === this) closeModal()">
-        <div class="modal-content">
-            <h3 style="margin-bottom: 20px; font-weight: 800;">Add Custom Goal</h3>
-            <input type="text" id="new-item-name" placeholder="Target Name (e.g. Dream House)">
-            <input type="number" id="new-item-price" placeholder="Target Price (THB)">
-            <input type="text" id="new-item-icon" placeholder="Icon Emoji (e.g. 🏰)">
-            <div style="display: flex; gap: 12px; margin-top: 10px;">
-                <button class="btn" style="flex: 1;" onclick="closeModal()">Cancel</button>
-                <button class="btn btn-primary" style="flex: 1;" onclick="saveCustomItem()">Save Goal</button>
-            </div>
-        </div>
-    </div>
+    <!-- ── Verification Gate (floating widget) ──────────────────────────── -->
+    <div id="gate" class="fixed inset-0 z-[9999] flex items-center justify-center pointer-events-none" style="display:none" aria-modal="true" role="dialog" aria-label="Human verification">
+        <!-- Backdrop — appears instantly, no transition -->
+        <div id="gate-backdrop" class="absolute inset-0 bg-black/20 dark:bg-black/40 backdrop-blur-sm opacity-0"></div>
+        <!-- Card — fades in after backdrop is up -->
+        <div id="gate-card" class="relative z-10 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-700 rounded-3xl shadow-2xl shadow-black/10 dark:shadow-black/40 px-8 py-8 flex flex-col items-center gap-5 text-center w-[340px] max-w-[calc(100vw-2rem)] opacity-0 transition-opacity duration-500">
+            <p class="font-extrabold tracking-tighter text-xl uppercase text-gray-900 dark:text-gray-100">Sorawisit.</p>
+            <div class="space-y-1">
+                <p class="text-gray-800 dark:text-gray-100 font-semibold text-sm">Just a quick check</p>
+                <p class="text-gray-500 dark:text-gray-400 text-xs leading-relaxed">Please wait a moment while we check if you are a real human.</p>
+            </div>
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAACu0fPr8t_BH6Ful" data-theme="auto" data-callback="onGateVerified"></div>
+            <p id="gate-error" class="hidden text-red-400 text-xs">Verification failed. Please refresh the page.</p>
+        </div>
+    </div>
 
-    <div class="main-container">
-        <header>
-            <div class="logo-area">
-                <span class="btc-icon">₿</span>
-                <h1>Bitcoin Converter</h1>
-            </div>
-            <p class="credit">Dev <a href="https://x.com/sorawisitt" target="_blank">@SorawisitT</a></p>
-        </header>
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0" aria-hidden="true">
+        <div id="shimmer"></div>
+    </div>
 
-        <div class="glass-card">
-            <div class="stats-row">
-                <div class="stat-box primary-stat">
-                    <span class="ticker-label">BTC Market Price</span>
-                    <div class="ticker-value" id="ticker-btc-thb">฿0.00</div>
-                    <div class="sub-value" id="ticker-thb-sat">---</div>
-                </div>
-                
-                <div class="stat-box">
-                    <span class="ticker-label">Halving</span>
-                    <div class="ticker-value" id="halving-timer">--d --h</div>
-                    <div class="sub-value">Next Reward Cut</div>
-                </div>
-                <div class="stat-box">
-                    <span class="ticker-label">Network Fee</span>
-                    <div class="ticker-value" id="fee-high">-- sat</div>
-                    <div class="sub-value">Priority Next Block</div>
-                </div>
-                <div class="stat-box">
-                    <span class="ticker-label">Sync Status</span>
-                    <div class="ticker-value" id="countdown-text">30s</div>
-                    <div class="sub-value" id="status-text">Connected</div>
-                </div>
-            </div>
+    <nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-gray-100 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#top" class="font-extrabold tracking-tighter text-lg uppercase hover:opacity-70 transition-opacity">Sorawisit.</a>
+            <div class="flex items-center gap-2">
+                <button id="say-hi-btn" aria-label="Scroll to contact section" class="h-10 px-5 flex items-center justify-center bg-black dark:bg-white text-white dark:text-black text-xs font-bold rounded-xl hover:opacity-80 transition-opacity shadow-lg active:scale-95">Say Hi</button>
+                <button id="theme-toggle" aria-label="Toggle color theme" class="h-10 px-4 flex items-center justify-center gap-2 rounded-xl bg-gray-100 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 hover:border-blue-300 transition-colors text-xs font-bold">
+                    <span id="theme-icon" aria-hidden="true">🌓</span>
+                    <span id="theme-text" class="hidden sm:inline">System</span>
+                </button>
+            </div>
+        </div>
+    </nav>
 
-            <div class="converter-grid">
-                <div class="input-wrapper">
-                    <label>Thai Baht <span>THB</span></label>
-                    <div class="input-container">
-                        <input type="text" id="thb-input" placeholder="0" inputmode="numeric">
-                        <button class="copy-btn" onclick="copyValue('thb-input')">📄</button>
-                    </div>
-                </div>
-                <div class="input-wrapper">
-                    <label>Satoshi <span>SAT</span></label>
-                    <div class="input-container">
-                        <input type="text" id="sat-input" placeholder="0" inputmode="numeric">
-                        <button class="copy-btn" onclick="copyValue('sat-input')">📄</button>
-                    </div>
-                </div>
-                <div class="input-wrapper">
-                    <label>Bitcoin <span>BTC</span></label>
-                    <div class="input-container">
-                        <input type="text" id="btc-input" placeholder="0" inputmode="decimal">
-                        <button class="copy-btn" onclick="copyValue('btc-input')">📄</button>
-                    </div>
-                </div>
-            </div>
+    <main class="max-w-3xl mx-auto px-6 pt-32 pb-40 relative z-10">
+        
+        <header id="about" class="text-center mb-16 flex flex-col items-center">
+            <div class="text-6xl mb-6 flex justify-center w-full" aria-hidden="true"><span class="waving-hand">👋</span></div>
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tighter mb-4 flex items-center justify-center min-h-[1.2em]">
+                <span class="sr-only">Hi, I'm Sorawisit!</span>
+                <span id="typewriter" aria-hidden="true"></span><span class="cursor" aria-hidden="true"></span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-500 dark:text-gray-400 leading-relaxed max-w-xl mx-auto font-medium">
+                Currently studying <span class="text-black dark:text-white font-semibold">Tourism & Hospitality Management</span> at NIDA. Tourism researcher and translator based in Bangkok.
+            </p>
+        </header>
 
-            <div id="supply-warning">
-                ⚠️ Warning: Only 21,000,000 Bitcoin will ever exist. Values capped to total supply.
-            </div>
+        <section id="search-interface" class="relative max-w-2xl mx-auto mb-16" aria-label="AI-powered search">
+            <div class="card shadow-xl shadow-blue-900/5 dark:shadow-blue-500/5 border-blue-50 dark:border-slate-700 p-6 md:p-8">
+                <div class="space-y-6">
+                    <div class="relative group">
+                        <label for="ai-query" class="sr-only">Search this website</label>
+                        <input type="text" id="ai-query"
+                            class="w-full p-6 bg-gray-50 dark:bg-slate-900/50 border-2 border-transparent dark:text-white rounded-2xl focus:border-blue-400 focus:bg-white dark:focus:bg-slate-900 focus:ring-4 focus:ring-blue-400/20 transition-all outline-none text-base pr-28 shadow-inner placeholder:text-gray-400 dark:placeholder:text-gray-500"
+                            placeholder="Search my website..."
+                            autocomplete="off"
+                            maxlength="400">
+                        <button id="ai-submit" aria-label="Submit search query" class="absolute right-3 top-3 bottom-3 px-6 bg-blue-600 text-white text-xs font-black rounded-xl hover:bg-blue-700 transition-all shadow-xl shadow-blue-600/20 active:scale-95 disabled:opacity-50">Ask</button>
+                        <span id="char-counter" class="absolute bottom-2 left-4 text-xs text-gray-400 dark:text-gray-500 hidden">0 / 400</span>
+                    </div>
+                    <div id="ai-chat-output" class="hidden bg-gray-50 dark:bg-slate-900/40 p-6 rounded-2xl rounded-tl-none border border-gray-100 dark:border-slate-700 text-base text-gray-700 dark:text-gray-300 leading-relaxed shadow-inner" role="status" aria-live="polite"></div>
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 px-2">
+                        <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+                            <p class="w-full sm:w-auto text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-1 sm:mb-0 sm:mr-2">Quick Inquiries</p>
+                            <button class="quick-inquiry-btn px-3 py-1.5 bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-full text-xs font-bold text-gray-500 dark:text-gray-400 hover:border-blue-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors hover:shadow-sm disabled:opacity-50" data-query="Tell me about Sorawisit's education.">Education</button>
+                            <button class="quick-inquiry-btn px-3 py-1.5 bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-full text-xs font-bold text-gray-500 dark:text-gray-400 hover:border-blue-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors hover:shadow-sm disabled:opacity-50" data-query="Tell me about Sorawisit's experiences.">Experiences</button>
+                            <button id="insight-btn" class="px-3 py-1.5 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/50 rounded-full text-xs font-black hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors flex items-center gap-1.5 disabled:opacity-50">✨ Get Insight</button>
+                        </div>
+                        <button id="clear-btn" class="hidden text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400 hover:text-red-500 transition-colors">Clear Results</button>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <div class="controls-row">
-                <button class="btn" id="theme-toggle">
-                    <span id="theme-icon">🌓</span> <span id="theme-label">System</span>
-                </button>
-                <button class="btn btn-primary" id="refresh-btn">🔄 Update</button>
-            </div>
-        </div>
+        <!-- Education -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+            <div class="card text-center flex flex-col items-center p-8">
+                <div class="text-4xl mb-4" aria-hidden="true">🎓</div>
+                <h2 class="font-extrabold text-lg mb-2">NIDA Master's</h2>
+                <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">Integrated Tourism & Hospitality Management. Partial II Scholarship recipient.</p>
+            </div>
+            <div class="card text-center flex flex-col items-center p-8">
+                <div class="text-4xl mb-4" aria-hidden="true">🏛️</div>
+                <h2 class="font-extrabold text-lg mb-2">Mahidol Graduate</h2>
+                <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">Bachelor of Arts in English. Focused on Linguistics and Psychology.</p>
+            </div>
+        </div>
 
-        <div class="comparison-section">
-            <div class="section-header">
-                <h2>The Bitcoin Standard</h2>
-            </div>
-            <div class="comparison-grid" id="standard-grid"></div>
-        </div>
+        <div class="space-y-16">
+            <section aria-label="Published research">
+                <h3 class="text-xs font-black uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400 mb-6 flex items-center gap-4"><span>Published Research</span><div class="h-px bg-gray-100 dark:bg-slate-800 flex-grow" aria-hidden="true"></div></h3>
+                <div class="card flex flex-col md:flex-row gap-6 items-start">
+                    <span class="text-3xl" aria-hidden="true">📄</span>
+                    <div>
+                        <p class="font-black text-xl mb-2 tracking-tight leading-snug">Service quality development to enhance revisit intention among Thai family tourists at water park hotels in Pattaya City, Chonburi province</p>
+                        <p class="text-blue-500 dark:text-blue-400 font-bold text-xs mb-3 uppercase tracking-widest">International Thai Tourism Journal • Vol. 22(2) • 2026</p>
+                        <p class="text-gray-500 dark:text-gray-400 leading-relaxed text-sm">Co-authored with Asst. Prof. Paithoon Monpanthong, Ph.D. Drawn from my independent research at NIDA, examining the service-quality drivers that shape repeat visitation in Thailand's family resort segment.</p>
+                    </div>
+                </div>
+            </section>
 
-        <div class="comparison-section" id="goals-section" style="display: none;">
-            <div class="section-header">
-                <h2>Custom Savings Goals</h2>
-                <button class="btn" style="height: 32px; padding: 0 12px; font-size: 0.75rem; flex: initial;" onclick="openModal()">+ New Goal</button>
-            </div>
-            <div class="comparison-grid" id="goals-grid"></div>
-        </div>
+            <section aria-label="Professional experience">
+                <h3 class="text-xs font-black uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400 mb-6 flex items-center gap-4"><span>Professional Log</span><div class="h-px bg-gray-100 dark:bg-slate-800 flex-grow" aria-hidden="true"></div></h3>
+                <div class="space-y-6">
+                    <div class="card flex flex-col md:flex-row gap-6 items-start">
+                        <span class="text-3xl" aria-hidden="true">✍️</span>
+                        <div>
+                            <p class="font-black text-xl mb-1 tracking-tight">Translator & Editor</p>
+                            <p class="text-blue-500 dark:text-blue-400 font-bold text-xs mb-3 uppercase tracking-widest">Nisit Sam Yan Co., Ltd. • 2021 to Present</p>
+                            <p class="text-gray-500 dark:text-gray-400 leading-relaxed text-sm">I manage end-to-end book translation and editorial workflows while adapting complex narratives to ensure high cultural relevance for the Thai market.</p>
+                        </div>
+                    </div>
+                    <div class="card flex flex-col md:flex-row gap-6 items-start">
+                        <span class="text-3xl" aria-hidden="true">🏛️</span>
+                        <div>
+                            <p class="font-black text-xl mb-1 tracking-tight">Public Relations Intern</p>
+                            <p class="text-blue-500 dark:text-blue-400 font-bold text-xs mb-3 uppercase tracking-widest">Office of the Prime Minister • 2023</p>
+                            <p class="text-gray-500 dark:text-gray-400 leading-relaxed text-sm">I supported national "Soft Power" initiatives by researching gastronomic traditions and authoring compelling narratives to showcase Thailand's culinary diversity.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-        <div id="no-goals-cta" style="text-align: center; margin-bottom: 60px;">
-             <button class="btn" style="max-width: 280px; margin: 0 auto;" onclick="openModal()">+ Add Custom Goal</button>
-        </div>
+            <section aria-label="Operational involvement">
+                <h3 class="text-xs font-black uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400 mb-6 flex items-center gap-4"><span>Operational Involvement</span><div class="h-px bg-gray-100 dark:bg-slate-800 flex-grow" aria-hidden="true"></div></h3>
+                <div class="card">
+                    <p class="text-xs font-black text-blue-500 dark:text-blue-400 uppercase tracking-[0.15em] mb-8">Staff Member • NIDA Coordination</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                        <div class="space-y-2">
+                            <p class="font-black flex items-center gap-2 text-base"><span aria-hidden="true">🗓️</span> GSTM NEXT 2025</p>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">Manage presentation sequencing and initiate the quiz to support smooth attendee flow during peak hours.</p>
+                        </div>
+                        <div class="space-y-2">
+                            <p class="font-black flex items-center gap-2 text-base"><span aria-hidden="true">🌿</span> CSC-2030 Program</p>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">Delivered comprehensive operational support for a high-level, week-long training intensive focused on culture for sustainability.</p>
+                        </div>
+                        <div class="space-y-2">
+                            <p class="font-black flex items-center gap-2 text-base"><span aria-hidden="true">🏆</span> 8th GSTM Awards</p>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">Managed logistics and on-site coordination for the National Quiz Competition in Tourism, Hospitality, and Aviation.</p>
+                        </div>
+                        <div class="space-y-2">
+                            <p class="font-black flex items-center gap-2 text-base"><span aria-hidden="true">🛂</span> NIC-NIDA 2024</p>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">Facilitated international registration and resolved on-site inquiries to provide a professional experience for global attendees.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-        <footer>
-            Node Sync: <a href="https://bitkub.com" target="_blank">Bitkub</a> & <a href="https://mempool.space" target="_blank">Mempool</a><br>
-            Purchasing Power Parity • <a href="https://sorawisit.com" target="_blank">sorawisit.com</a><br>
-            ⚡ <a href="https://pay.blink.sv/SORAWISIT" target="_blank">Donate Sats</a>
-        </footer>
-    </div>
+            <section aria-label="Involvement history">
+                <h3 class="text-xs font-black uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400 mb-6 flex items-center gap-4"><span>Involvement History</span><div class="h-px bg-gray-100 dark:bg-slate-800 flex-grow" aria-hidden="true"></div></h3>
+                <div class="space-y-6">
+                    <div class="card flex flex-col md:flex-row gap-6 items-start">
+                        <span class="text-3xl" aria-hidden="true">🌏</span>
+                        <div>
+                            <p class="font-black text-xl mb-1">The Young SEAkers Thailand</p>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">I spearheaded regional leadership initiatives and managed operations to foster community-building for youth leaders across Southeast Asia.</p>
+                        </div>
+                    </div>
+                    <div class="card flex flex-col md:flex-row gap-6 items-start">
+                        <span class="text-3xl" aria-hidden="true">🎤</span>
+                        <div>
+                            <p class="font-black text-xl mb-1">Academic Session Chair (NIC-NIDA 2025)</p>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">I coordinated large-scale academic conferences while serving as a Session Chair, facilitating international paper presentations.</p>
+                        </div>
+                    </div>
+                    <div class="card flex flex-col md:flex-row gap-6 items-start">
+                        <span class="text-3xl" aria-hidden="true">🍰</span>
+                        <div>
+                            <p class="font-black text-xl mb-1 tracking-tight">GSB Yuwapat Rakthin Project</p>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">I engaged in sustainable tourism planning in Khlong Toei by collaborating with local residents on branding and quality control for heritage products.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-    <script>
-        (function() {
-            const MAX_BTC = 21000000;
-            const state = {
-                rate: 3200000,
-                themeMode: localStorage.getItem('themeMode') || 'system',
-                secondsRemaining: 30,
-                nextHalving: new Date('2028-04-17T00:00:00Z').getTime(),
-                customItems: JSON.parse(localStorage.getItem('customGoals')) || [],
-                baseItems: [
-                    { name: "Coffee", price: 120, icon: "☕" },
-                    { name: "Street Food Meal", price: 60, icon: "🍜" },
-                    { name: "BTS Fare", price: 20, icon: "🚇" },
-                    { name: "Movie Ticket", price: 240, icon: "🎬" },
-                    { name: "iPhone 17 Pro", price: 43900, icon: "📱" },
-                    { name: "Condo Rent", price: 15000, icon: "🏠" },
-                    { name: "Full Tank of Gas", price: 1200, icon: "⛽" },
-                    { name: "Gold (1 Baht)", price: 65000, icon: "📀" },
-                    { name: "Tesla Model 3", price: 1149000, icon: "🚗" }
-                ]
-            };
+            <section id="contact" class="pt-8">
+                <div class="bg-blue-600 dark:bg-blue-700 p-10 md:p-14 rounded-3xl text-center relative z-10 transition-all duration-500 hover:shadow-2xl">
+                    <div class="text-5xl mb-6 flex justify-center w-full" aria-hidden="true">💬</div>
+                    <h2 class="text-2xl md:text-3xl font-black mb-4 text-white tracking-tighter">Let's build something together.</h2>
+                    <p class="text-blue-100 dark:text-blue-200 mb-8 text-base max-w-md mx-auto leading-relaxed">Whether it's collaboration, translation, or sustainable tourism chat.</p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <a href="/cdn-cgi/l/email-protection#076a666e6b4774687566706e746e732964686a" class="h-14 px-8 bg-white text-blue-600 font-black rounded-2xl hover:bg-blue-50 transition-all flex items-center justify-center gap-2 shadow-xl active:scale-95">Email Me</a>
+                        <a href="https://www.linkedin.com/in/sorawisit/" target="_blank" rel="noopener noreferrer" class="h-14 px-8 bg-blue-800 dark:bg-slate-900 text-white font-black rounded-2xl hover:opacity-90 transition-all flex items-center justify-center gap-2 border border-blue-500/30 active:scale-95">LinkedIn</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
 
-            const els = {
-                thb: document.getElementById('thb-input'),
-                sat: document.getElementById('sat-input'),
-                btc: document.getElementById('btc-input'),
-                tickerBtc: document.getElementById('ticker-btc-thb'),
-                tickerSat: document.getElementById('ticker-thb-sat'),
-                halving: document.getElementById('halving-timer'),
-                fee: document.getElementById('fee-high'),
-                countdown: document.getElementById('countdown-text'),
-                status: document.getElementById('status-text'),
-                standardGrid: document.getElementById('standard-grid'),
-                goalsGrid: document.getElementById('goals-grid'),
-                goalsSection: document.getElementById('goals-section'),
-                noGoalsCta: document.getElementById('no-goals-cta'),
-                modal: document.getElementById('modal-overlay'),
-                toast: document.getElementById('toast'),
-                themeToggle: document.getElementById('theme-toggle'),
-                themeLabel: document.getElementById('theme-label'),
-                themeIcon: document.getElementById('theme-icon'),
-                warning: document.getElementById('supply-warning')
-            };
+    <footer class="bg-white dark:bg-slate-950 border-t border-gray-100 dark:border-slate-800 pt-16 pb-12 relative z-10 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-10 mb-12">
+                <div>
+                    <div class="flex items-center gap-2 mb-4"><span class="font-extrabold tracking-tighter text-2xl uppercase">Sorawisit</span></div>
+                    <p class="text-gray-500 dark:text-gray-400 text-xs max-w-xs leading-relaxed">Welcome to sorawisit.com, an interactive portfolio, and personal website of Sorawisit Totharong.</p>
+                </div>
+                <div class="grid grid-cols-2 gap-12">
+                    <div>
+                        <p class="font-bold text-xs mb-4 uppercase tracking-widest text-gray-500 dark:text-gray-400">Connect</p>
+                        <ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
+                            <li><a href="/cdn-cgi/l/email-protection#264b474f4a6655495447514f554f520845494b" class="hover:text-blue-600 transition-colors">Email</a></li>
+                            <li><a href="https://www.linkedin.com/in/sorawisit/" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 transition-colors">LinkedIn</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p class="font-bold text-xs mb-4 uppercase tracking-widest text-gray-500 dark:text-gray-400">Location</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 font-medium">Bangkok, Thailand</p>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-gray-50 dark:border-slate-800 flex justify-center">
+                <p class="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-widest font-bold text-center">© 2026 sorawisit.com. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-            function init() {
-                applyTheme(); // Updates labels/icons based on initial state
-                fetchAllData();
-                setupListeners();
-                setInterval(updateTickers, 1000);
-                setInterval(updateHalving, 1000);
-            }
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // ── Config ─────────────────────────────────────────────────────────────
+        // Keep in sync with the `maxlength` attribute on #ai-query
+        const MAX_QUERY_LEN = 400;
 
-            function setupListeners() {
-                els.thb.oninput = (e) => handleInput(e, 'thb');
-                els.sat.oninput = (e) => handleInput(e, 'sat');
-                els.btc.oninput = (e) => handleInput(e, 'btc');
-                document.getElementById('refresh-btn').onclick = fetchAllData;
-                els.themeToggle.onclick = toggleTheme;
-                
-                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-                    if (state.themeMode === 'system') applyTheme();
-                });
-            }
+        // ── Verification Gate ──────────────────────────────────────────────────
+        const gate = document.getElementById('gate');
 
-            async function fetchAllData() {
-                state.secondsRemaining = 30;
-                els.status.textContent = "Updating...";
-                try {
-                    const bResp = await fetch(`https://api.bitkub.com/api/market/ticker?sym=THB_BTC&t=${Date.now()}`);
-                    const bData = await bResp.json();
-                    if(bData.THB_BTC) state.rate = parseFloat(bData.THB_BTC.last);
+        // On every page load, ping api.php to check if the PHP session is still
+        // alive. If yes, the gate never becomes visible. If no, fade it in and
+        // let Turnstile run as normal.
+        (async function checkSession() {
+            try {
+                const res = await fetch('api.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ sessionCheck: true }),
+                });
+                if (res.ok) {
+                    // Valid session — remove gate silently, user sees nothing
+                    gate.remove();
+                    startTypewriter();
+                    return;
+                }
+            } catch { /* network error — fall through and show gate */ }
+            // No valid session — backdrop appears instantly, card fades in shortly after
+            gate.style.display = 'flex';
+            gate.classList.remove('pointer-events-none');
+            const backdrop = document.getElementById('gate-backdrop');
+            const card     = document.getElementById('gate-card');
+            // Backdrop: instant (no transition class)
+            backdrop.style.opacity = '1';
+            // Card: fade in on next frame so transition plays cleanly
+            requestAnimationFrame(() => { card.style.opacity = '1'; });
+        })();
 
-                    const fResp = await fetch('https://mempool.space/api/v1/fees/recommended');
-                    const fData = await fResp.json();
-                    els.fee.textContent = `${fData.fastestFee} sat/vB`;
+        async function onGateVerified(token) {
+            try {
+                const res = await fetch('api.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ turnstileToken: token, gateCheck: true }),
+                });
+                if (res.ok) {
+                    const card     = document.getElementById('gate-card');
+                    const backdrop = document.getElementById('gate-backdrop');
+                    card.style.opacity = '0';
+                    setTimeout(() => {
+                        backdrop.style.opacity = '0';
+                        setTimeout(() => { gate.remove(); startTypewriter(); }, 150);
+                    }, 400);
+                } else {
+                    document.getElementById('gate-error').classList.remove('hidden');
+                }
+            } catch {
+                document.getElementById('gate-error').classList.remove('hidden');
+            }
+        }
 
-                    updateStaticUI();
-                    els.status.textContent = "Connected";
-                } catch (e) {
-                    els.status.textContent = "Offline";
-                }
-            }
+        // ── Theme ──────────────────────────────────────────────────────────────
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon   = document.getElementById('theme-icon');
+        const themeText   = document.getElementById('theme-text');
 
-            function updateTickers() {
-                if (state.secondsRemaining > 0) {
-                    state.secondsRemaining--;
-                    els.countdown.textContent = `${state.secondsRemaining}s`;
-                } else {
-                    fetchAllData();
-                }
-            }
+        const themeState = {
+            get current() { return localStorage.getItem('theme') || 'auto'; },
+            set current(val) { localStorage.setItem('theme', val); },
+            mediaQuery: window.matchMedia('(prefers-color-scheme: dark)')
+        };
 
-            function updateHalving() {
-                const now = new Date().getTime();
-                const dist = state.nextHalving - now;
-                const days = Math.floor(dist / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                els.halving.textContent = `${days}d ${hours}h`;
-            }
+        function updateThemeUI() {
+            const theme     = themeState.current;
+            const isDarkSys = themeState.mediaQuery.matches;
+            document.documentElement.classList.toggle('dark',
+                theme === 'dark' || (theme === 'auto' && isDarkSys));
+            const map = { light: ['☀️','Light'], dark: ['🌙','Dark'], auto: ['🌓','System'] };
+            const [icon, label] = map[theme] ?? map.auto;
+            themeIcon.textContent = icon;
+            themeText.textContent = label;
+        }
 
-            function updateStaticUI() {
-                els.tickerBtc.textContent = `฿${state.rate.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-                const satsPerThb = Math.round(100000000 / state.rate);
-                els.tickerSat.textContent = `1 THB ≈ ${satsPerThb.toLocaleString()} sats`;
-                renderComparison();
-            }
+        updateThemeUI();
+        themeState.mediaQuery.addEventListener('change', () => {
+            if (themeState.current === 'auto') updateThemeUI();
+        });
+        themeToggle.addEventListener('click', () => {
+            const cycle = { auto: 'light', light: 'dark', dark: 'auto' };
+            themeState.current = cycle[themeState.current] ?? 'auto';
+            updateThemeUI();
+        });
 
-            function renderComparison() {
-                els.standardGrid.innerHTML = '';
-                state.baseItems.forEach(item => els.standardGrid.appendChild(createCard(item)));
+        // ── Nav ────────────────────────────────────────────────────────────────
+        document.getElementById('say-hi-btn').addEventListener('click', () => {
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
 
-                els.goalsGrid.innerHTML = '';
-                if (state.customItems.length > 0) {
-                    els.goalsSection.style.display = 'block';
-                    els.noGoalsCta.style.display = 'none';
-                    state.customItems.forEach((item, idx) => els.goalsGrid.appendChild(createCard(item, true, idx)));
-                } else {
-                    els.goalsSection.style.display = 'none';
-                    els.noGoalsCta.style.display = 'block';
-                }
-            }
+        // ── Shimmer (throttled, GPU-composited via transform) ──────────────────
+        const shimmer = document.getElementById('shimmer');
+        let shimmerFrame;
+        document.addEventListener('mousemove', (e) => {
+            if (shimmerFrame) return;
+            shimmerFrame = requestAnimationFrame(() => {
+                shimmer.style.opacity = '1';
+                shimmer.style.transform = `translate(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%))`;
+                shimmerFrame = null;
+            });
+        });
+        document.addEventListener('mouseleave', () => { shimmer.style.opacity = '0'; });
 
-            function createCard(item, isCustom = false, idx = null) {
-                const btcVal = item.price / state.rate;
-                const satVal = Math.round(btcVal * 100000000);
-                const card = document.createElement('div');
-                card.className = `comparison-card ${isCustom ? 'custom' : ''}`;
-                card.innerHTML = `
-                    ${isCustom ? `<button style="position:absolute;top:8px;right:8px;background:none;border:none;color:var(--danger);cursor:pointer;font-weight:bold;font-size:1.1rem;padding:4px;" onclick="deleteItem(${idx})">×</button>` : ''}
-                    <span class="item-icon">${item.icon}</span>
-                    <div class="item-name">${item.name}</div>
-                    <div class="item-thb">฿${Math.round(item.price).toLocaleString()}</div>
-                    <div class="item-sat">${satVal.toLocaleString()} sats</div>
-                `;
-                return card;
-            }
+        // ── AI Search ──────────────────────────────────────────────────────────
+        let isFetching = false;
+        let fetchController = null;
 
-            function formatNumber(num, isBTC = false) {
-                if (isNaN(num)) return "0";
-                if (isBTC) {
-                    return parseFloat(num.toFixed(8)).toLocaleString('en-US', { maximumFractionDigits: 8 });
-                }
-                return Math.round(num).toLocaleString('en-US');
-            }
+        function setButtonsDisabled(disabled) {
+            document.getElementById('ai-submit').disabled = disabled;
+            document.getElementById('insight-btn').disabled = disabled;
+            document.querySelectorAll('.quick-inquiry-btn').forEach(btn => btn.disabled = disabled);
+        }
 
-            function handleInput(e, source) {
-                const input = e.target;
-                const originalSelectionStart = input.selectionStart;
-                const originalValue = input.value;
-                
-                let rawValStr = source === 'btc' ? input.value.replace(/[^0-9.]/g, '') : input.value.replace(/\D/g, '');
-                
-                if (source === 'btc') {
-                    const parts = rawValStr.split('.');
-                    if (parts.length > 2) rawValStr = parts[0] + '.' + parts.slice(1).join('');
-                }
+        async function callGemini(prompt) {
+            if (isFetching) return;
+            isFetching = true;
+            setButtonsDisabled(true);
 
-                if (rawValStr === '' || rawValStr === '.') {
-                    if (rawValStr === '') {
-                        els.thb.value = '';
-                        els.sat.value = '';
-                        els.btc.value = '';
-                        els.warning.style.display = 'none';
-                    }
-                    return;
-                }
+            fetchController = new AbortController();
+            const timeoutId = setTimeout(() => fetchController.abort(), 15000);
 
-                let val = parseFloat(rawValStr);
-                let currentBTC = 0;
-                let showWarning = false;
+            try {
+                const response = await fetch('api.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: prompt }] }],
+                    }),
+                    signal: fetchController.signal
+                });
 
-                if (source === 'thb') {
-                    currentBTC = val / state.rate;
-                } else if (source === 'sat') {
-                    currentBTC = val / 100000000;
-                } else if (source === 'btc') {
-                    currentBTC = val;
-                }
+                clearTimeout(timeoutId);
 
-                if (currentBTC > MAX_BTC) {
-                    currentBTC = MAX_BTC;
-                    showWarning = true;
-                    if (source === 'thb') val = MAX_BTC * state.rate;
-                    if (source === 'sat') val = MAX_BTC * 100000000;
-                    if (source === 'btc') val = MAX_BTC;
-                    rawValStr = val.toString();
-                }
+                if (!response.ok) {
+                    if (response.status === 429) return 'Too many requests. Please wait a moment and try again.';
+                    if (response.status === 403) return 'Your session has expired. Please refresh the page to continue.';
+                    if (response.status === 404) return 'api.php not found. Please ensure it is in the same directory.';
+                    return `Server Error: ${response.status}`;
+                }
 
-                els.warning.style.display = showWarning ? 'block' : 'none';
+                const data = await response.json();
+                return data?.candidates?.[0]?.content?.parts?.[0]?.text || 'No records found.';
+            } catch (err) {
+                clearTimeout(timeoutId);
+                if (err.name === 'AbortError') return 'Request timed out. Please try again.';
+                return `Connection Error: ${err.message}`;
+            } finally {
+                isFetching      = false;
+                fetchController = null;
+                setButtonsDisabled(false);
+            }
+        }
 
-                let formattedTyped;
-                if (source === 'btc') {
-                    const [intPart, decPart] = rawValStr.split('.');
-                    formattedTyped = parseInt(intPart || '0', 10).toLocaleString('en-US');
-                    if (decPart !== undefined) formattedTyped += '.' + decPart.substring(0, 8);
-                } else {
-                    formattedTyped = Math.round(val).toLocaleString('en-US');
-                }
-                
-                input.value = formattedTyped;
+        async function handleAISubmit() {
+            const input  = document.getElementById('ai-query');
+            const output = document.getElementById('ai-chat-output');
+            const query  = input.value.trim();
+            if (!query || isFetching) return;
 
-                const addedChars = input.value.length - originalValue.length;
-                let newCursorPos = originalSelectionStart + addedChars;
-                input.setSelectionRange(newCursorPos, newCursorPos);
+            output.classList.remove('hidden');
+            document.getElementById('clear-btn').classList.remove('hidden');
+            output.innerHTML = '<span class="loading-dots text-blue-500 font-bold tracking-widest uppercase text-xs">Searching Records</span>';
+            input.value = '';
+            document.getElementById('char-counter').classList.add('hidden');
+            document.getElementById('char-counter').textContent = `0 / ${MAX_QUERY_LEN}`;
 
-                if (source === 'thb') {
-                    els.sat.value = formatNumber(currentBTC * 100000000);
-                    els.btc.value = formatNumber(currentBTC, true);
-                } else if (source === 'sat') {
-                    els.thb.value = formatNumber(currentBTC * state.rate);
-                    els.btc.value = formatNumber(currentBTC, true);
-                } else if (source === 'btc') {
-                    els.thb.value = formatNumber(currentBTC * state.rate);
-                    els.sat.value = formatNumber(currentBTC * 100000000);
-                }
-            }
+            const response = await callGemini(query);
+            // Trigger pop-in only when fresh content arrives
+            output.classList.remove('msg-bubble');
+            void output.offsetWidth; // force reflow to restart animation
+            output.classList.add('msg-bubble');
+            output.textContent = response;
+        }
 
-            window.openModal = () => els.modal.style.display = 'flex';
-            window.closeModal = () => els.modal.style.display = 'none';
-            window.saveCustomItem = () => {
-                const name = document.getElementById('new-item-name').value;
-                const price = parseFloat(document.getElementById('new-item-price').value);
-                const icon = document.getElementById('new-item-icon').value || '🎯';
-                if (name && price) {
-                    state.customItems.push({ name, price, icon });
-                    localStorage.setItem('customGoals', JSON.stringify(state.customItems));
-                    renderComparison();
-                    closeModal();
-                }
-            };
-            window.deleteItem = (idx) => {
-                state.customItems.splice(idx, 1);
-                localStorage.setItem('customGoals', JSON.stringify(state.customItems));
-                renderComparison();
-            };
-            window.copyValue = (id) => {
-                const el = document.getElementById(id);
-                const text = el.value.replace(/,/g, '');
-                const textArea = document.createElement("textarea");
-                textArea.value = text;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-                els.toast.style.transform = 'translateX(-50%) translateY(0)';
-                setTimeout(() => els.toast.style.transform = 'translateX(-50%) translateY(100px)', 2000);
-            };
+        function clearChat() {
+            document.getElementById('ai-chat-output').classList.add('hidden');
+            document.getElementById('clear-btn').classList.add('hidden');
+        }
 
-            function toggleTheme() {
-                const modes = ['system', 'light', 'dark'];
-                const currentIndex = modes.indexOf(state.themeMode);
-                state.themeMode = modes[(currentIndex + 1) % modes.length];
-                localStorage.setItem('themeMode', state.themeMode);
-                applyTheme();
-            }
+        async function generateInsight() {
+            const output = document.getElementById('ai-chat-output');
+            output.classList.remove('hidden');
+            document.getElementById('clear-btn').classList.remove('hidden');
+            output.innerHTML = '<span class="loading-dots text-blue-500 font-bold tracking-widest uppercase text-xs">Extracting Insight</span>';
+            const response = await callGemini("Based on Sorawisit's background, generate a one-sentence professional insight about tourism or linguistics.");
+            // Use a text node for the AI response — never innerHTML — to prevent XSS
+            const label = document.createElement('span');
+            label.className = 'block mb-1 text-xs font-black text-blue-600 dark:text-blue-400 uppercase tracking-[0.2em]';
+            label.textContent = 'Website Insight';
+            output.innerHTML = '';
+            output.classList.remove('msg-bubble');
+            void output.offsetWidth;
+            output.classList.add('msg-bubble');
+            output.appendChild(label);
+            output.appendChild(document.createTextNode(response));
+        }
 
-            function applyTheme() {
-                let actualTheme = state.themeMode;
-                if (state.themeMode === 'system') {
-                    actualTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-                    els.themeIcon.textContent = '🌓';
-                    els.themeLabel.textContent = 'System';
-                } else {
-                    els.themeIcon.textContent = state.themeMode === 'dark' ? '🌙' : '☀️';
-                    els.themeLabel.textContent = state.themeMode.charAt(0).toUpperCase() + state.themeMode.slice(1);
-                }
-                document.documentElement.setAttribute('data-theme', actualTheme);
-            }
+        // ── Quick inquiry buttons (event delegation) ───────────────────────────
+        document.querySelector('#search-interface').addEventListener('click', (e) => {
+            const btn = e.target.closest('.quick-inquiry-btn');
+            if (btn && !btn.disabled) {
+                document.getElementById('ai-query').value = btn.dataset.query;
+                handleAISubmit();
+            }
+        });
 
-            init();
-        })();
-    </script>
+        document.getElementById('insight-btn').addEventListener('click', generateInsight);
+        document.getElementById('clear-btn').addEventListener('click', clearChat);
+
+        // ── Typewriter (called once verification is confirmed) ─────────────────
+        function startTypewriter() {
+            const target = document.getElementById('typewriter');
+            const text   = "Hi, I'm Sorawisit!";
+            let i = 0;
+            target.textContent = '';
+            (function type() {
+                if (i < text.length) {
+                    target.textContent += text.charAt(i++);
+                    setTimeout(type, 100);
+                }
+            })();
+        }
+
+        // ── Init (script is at bottom of body — DOM already ready) ────────────
+        document.getElementById('ai-submit').addEventListener('click', handleAISubmit);
+        document.getElementById('ai-query').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') handleAISubmit();
+        });
+
+        // Character counter — shows once user starts typing, warns near limit
+        const aiQuery   = document.getElementById('ai-query');
+        const charCount = document.getElementById('char-counter');
+        aiQuery.addEventListener('input', () => {
+            const len = aiQuery.value.length;
+            if (len === 0) {
+                charCount.classList.add('hidden');
+                return;
+            }
+            charCount.classList.remove('hidden');
+            charCount.textContent = `${len} / ${MAX_QUERY_LEN}`;
+            charCount.classList.toggle('text-red-400',   len >= 380);
+            charCount.classList.toggle('text-yellow-400', len >= 300 && len < 380);
+            charCount.classList.toggle('text-gray-300',   len < 300);
+            charCount.classList.toggle('dark:text-gray-600', len < 300);
+        });
+    </script>
 </body>
 </html>
